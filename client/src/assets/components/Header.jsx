@@ -8,8 +8,6 @@ export function Header(){
         <header>
             <h1>Shop</h1>
             <Navigation/>
-
-           
         </header>
         </>
     )
