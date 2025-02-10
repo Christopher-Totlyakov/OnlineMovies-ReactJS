@@ -1,0 +1,37 @@
+.custom-header {
+    display: flex;
+    width: 100vw;
+    height: 180px;
+    position: relative;
+  }
+  
+  .header-left {
+    width: 50vw;
+    height: 120px;
+    
+    background: linear-gradient(135deg, #b30b0b, #ffa3b2);
+     clip-path: path(
+    "M 0 100 C 100 170, 220 20, 400 120 C 450 50, 650 150, 800 100 L 800 0, 800 100 C 900 170, 1320 20, 1800 120 C 2050 50, 650 150, 2500 100 L 2500 0, 2500 0 L 0 0 Z"
+  );
+      
+      
+
+    
+  }
+  
+  .header-right {
+    position: absolute;
+    left: 40vw;
+    width: 60vw;
+    height: 160px;
+    background: linear-gradient(135deg, #720be0, #3973d8);
+    clip-path: path(
+        "M 0 0 C 60 20, 30 100, 100 150 C 200 200, 300 50, 1000 160 L 1000 160 C 1200 170, 1300 0, 2500 160 L 2500 0 L 0 0 Z"
+      );
+      /* A 10,10 0,0,0 */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
