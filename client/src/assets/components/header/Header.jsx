@@ -5,9 +5,10 @@ export function Header() {
   return (
     <header className="custom-header">
       <div className="header-left">
-        <h1>Shop</h1>
+        <h1>Online Movies</h1>
       </div>
       <div className="header-right">
+        <img src="/public/movieLogo.png" alt="movie logo" />
         <Navigation />
       </div>
     </header>

@@ -1,0 +1,11 @@
+header nav a{
+    font-size: 2em;
+    font-weight: bold;
+    color: #213547;
+    margin: 0 1em 0.5em 0;
+
+}
+header nav{
+    align-self: baseline;
+    margin-top: 30px;
+}
