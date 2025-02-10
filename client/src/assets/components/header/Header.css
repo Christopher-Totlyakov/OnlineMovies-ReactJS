@@ -1,6 +1,5 @@
-.custom-header {
+header {
     display: flex;
-    width: 100vw;
     height: 180px;
     position: relative;
 }
@@ -15,7 +14,7 @@
 
 .header-right {
     position: absolute;
-    left: 40vw;
+    right: 0;
     width: 60vw;
     height: 160px;
     background: linear-gradient(135deg, #720be0, #3973d8);
@@ -33,4 +32,5 @@
 
 .header-left h1{
     margin: 20px 40px;
+    color: #213547;
 }

@@ -3,6 +3,8 @@ import { SearchBar } from "../SearchBar";
 import { MovieList } from "./elements/MovieList";
 import { getMovies } from "../../../api/dataMovies";
 
+import "./MoviePage.css"
+
 const arr = 
 
      [

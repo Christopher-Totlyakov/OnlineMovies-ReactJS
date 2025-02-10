@@ -3,7 +3,7 @@ import "./Header.css";
 
 export function Header() {
   return (
-    <header className="custom-header">
+    <header>
       <div className="header-left">
         <h1>Online Movies</h1>
       </div>

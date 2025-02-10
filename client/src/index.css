@@ -23,11 +23,23 @@ a:hover {
 }
 
 body {
+  color: white;
+  background-color: #213547;
+  position: sticky;
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-image: repeating-linear-gradient(
+  45deg,
+    rgba(255, 0, 0, 0.185) 0,
+    rgba(255, 255, 255, 0.07) 5px,
+    transparent 5px,
+    transparent 10px
+);
+
 }
 
 h1 {
