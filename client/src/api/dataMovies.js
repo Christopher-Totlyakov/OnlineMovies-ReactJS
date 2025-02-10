@@ -1,5 +1,5 @@
 async function DataRequest(type, name, year, page) {
-    const API_KEY = import.meta.env.VITE_OMDB_API_KEY; // Взимаме API ключа от .env файла
+    const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
     const currentYear = new Date().getFullYear();
 
@@ -10,7 +10,7 @@ async function DataRequest(type, name, year, page) {
     }
 
     const response = await fetch(url);
-    const result = await response.json(); // Изчакваме да се парсне като JSON
+    const result = await response.json();
 
     return result;
 }
