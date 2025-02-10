@@ -5,17 +5,19 @@ import { HomePage } from "./assets/components/home/HomePage";
 import { MoviePage } from "./assets/components/movies/MoviePage";
 import { SeriesPage } from "./assets/components/series/SeriesPage";
 import { Footer } from './assets/components/footer/Footer';
-import { SearchBar } from './assets/components/SearchBar';
+import MovieDetails from './assets/components/movies/MovieDetails';
+
 
 function App() {
 
   return (
     <>
       <Header/>
-      
+
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviePage />} />
+        <Route path="/movies" element={<MoviePage />}/>
+        <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="/series" element={<SeriesPage />} />
       </Routes>
 

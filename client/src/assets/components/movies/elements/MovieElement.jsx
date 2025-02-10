@@ -1,16 +1,16 @@
 import './MovieElement.css'
-export function MovieElement({ img, title, year }) {
+import { Link } from "react-router-dom";
+
+export function MovieElement({id, img, title, year}) {
     return (
-        <>
-        <div className="card-wrapper"> 
-            <div className="card" style={{ '--card-bg-img': `url(${img})` }}>
-                <p className="heading">{title}</p>
-                <p>{year}</p>
-                <a href="">Watch now!</a>
+        <Link to={`/movies/${id}`}>
+            <div className="card-wrapper">
+                <div className="card" style={{ '--card-bg-img': `url(${img})` }}>
+                    <p className="heading">{title}</p>
+                    <p>{year}</p>
+                </div>
             </div>
-        </div>
+        </Link>
 
-
-        </>
     );
 }
