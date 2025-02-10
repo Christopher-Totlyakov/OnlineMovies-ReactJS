@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { MovieElement } from "./MovieElement";
 
+import {getMovies} from "../../../../api/dataMovies"
+
 const arr = 
 
      [
@@ -78,11 +80,19 @@ const arr =
   
 
 export function MovieList(){
-    //const [arr, setMovie] = useState(arr);
+    const [movie, setMovie] = useState(arr);
+
+    const buttonClick = async () =>{
+      const data = await getMovies('ware', 2020, 1);
+
+      setMovie(() => Object.values(data)[0]);
+    }
+
+
     return(
         <>
-            {arr.map(x => <MovieElement key={x.imdbID} img={x.Poster} title={x.Title} year={x.Year}/>)}
-        
+            {movie.map(x => <MovieElement key={x.imdbID} img={x.Poster} title={x.Title} year={x.Year}/>)}
+            <button onClick={buttonClick}>next</button>
         </>
     );
 }
