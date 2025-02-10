@@ -8,7 +8,7 @@
 }
 
 .card {
-    height: 230px;
+    height: 254px;
     position: relative;
     background-image: var(--card-bg-img);
     background-position: center;

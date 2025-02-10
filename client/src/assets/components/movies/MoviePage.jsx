@@ -1,6 +1,6 @@
 import { MovieList } from "./elements/MovieList";
 
-export function AboutPage(){
+export function MoviePage(){
     return(
         <article>
             <h1>About</h1>

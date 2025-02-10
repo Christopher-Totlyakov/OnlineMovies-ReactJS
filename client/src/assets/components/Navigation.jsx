@@ -4,8 +4,8 @@ export function Navigation(){
     return(
         <nav>
             <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/products">Products</Link>
+            <Link to="/movies">Movies</Link>
+            <Link to="/series">Series</Link>
         </nav>
     );
 }

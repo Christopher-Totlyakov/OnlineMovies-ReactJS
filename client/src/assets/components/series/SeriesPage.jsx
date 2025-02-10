@@ -1,4 +1,4 @@
-export function ProductsPage(){
+export function SeriesPage(){
     return(
         <article>
             <h1>Products</h1>

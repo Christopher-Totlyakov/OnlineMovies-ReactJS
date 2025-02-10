@@ -1,10 +1,10 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import { Header } from './assets/components/Header'
-import { HomePage } from "./assets/components/pages/HomePage";
-import { AboutPage } from "./assets/components/pages/AboutPage";
-import { ProductsPage } from './assets/components/pages/ProductsPage';
-import { Footer } from './assets/components/footer';
+import { Header } from './assets/components/header/Header'
+import { HomePage } from "./assets/components/home/HomePage";
+import { MoviePage } from "./assets/components/movies/MoviePage";
+import { SeriesPage } from "./assets/components/series/SeriesPage";
+import { Footer } from './assets/components/footer/Footer';
 
 function App() {
 
@@ -14,8 +14,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/movies" element={<MoviePage />} />
+        <Route path="/series" element={<SeriesPage />} />
       </Routes>
 
       <Footer/>
