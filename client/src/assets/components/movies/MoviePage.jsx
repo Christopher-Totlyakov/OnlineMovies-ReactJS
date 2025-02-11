@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SearchBar } from "../SearchBar";
-import { MovieList } from "./elements/MovieList";
+import { MovieList } from "../shared/MovieList";
 import { getMovies } from "../../../api/dataMovies";
 
 import "./MoviePage.css"
 
-const arr = 
+const movieArr = 
 
      [
       {
@@ -82,13 +82,13 @@ const arr =
   
 
 export function MoviePage(){
-    const [movies, setMovies] = useState(arr);
+    const [movies, setMovies] = useState(movieArr);
 
  
 
     const handleSearch = async (query) => {
         const data = await getMovies(query.name, query.year, query.page);
-        setMovies(data.Search || arr); 
+        setMovies(data.Search || movieArr); 
     };
 
     return (

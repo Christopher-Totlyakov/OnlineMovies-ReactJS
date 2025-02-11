@@ -8,7 +8,7 @@ export function Header() {
         <h1>Online Movies</h1>
       </div>
       <div className="header-right">
-        <img src="/public/movieLogo.png" alt="movie logo" />
+        <img src="/movieLogo.png" alt="movie logo" />
         <Navigation />
       </div>
     </header>

@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import styles from './SearchBar.module.css';
+
+
 export function SearchBar({ onSearch }) {
     const [query, setQuery] = useState({ type: "movie", name: "", year: "", page: 1 });
 
@@ -14,13 +17,44 @@ export function SearchBar({ onSearch }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <select name="type" onChange={handleChange} value={query.type}>
-                <option value="movie">Movies</option>
-                <option value="series">Series</option>
-            </select>
-            <input type="text" name="name" placeholder="Search..." onChange={handleChange} value={query.name} />
-            <input type="number" name="year" placeholder="Year" onChange={handleChange} value={query.year} />
-            <button type="submit">Search</button>
+                        <div className={styles['inputSurch']}>
+                <div className={styles['glow']}></div>
+                <div className={styles['darkBorderBg']}></div>
+                <div className={styles['darkBorderBg']}></div>
+                <div className={styles['darkBorderBg']}></div>
+
+                <div className={styles['white']}></div>
+                <div className={styles['border']}></div>
+
+                <div className={styles['inputBox']}>
+                    <input type="text" name="name" className={styles['input']} placeholder="Keyword..." onChange={handleChange} value={query.name} />
+
+                    <div className={styles['input-mask']}></div>
+                    <div className={styles['pink-mask']}></div>
+                </div>
+            </div>
+            <div className={styles['inputSurch']}>
+                <div className={styles['glow']}></div>
+                <div className={styles['darkBorderBg']}></div>
+                <div className={styles['darkBorderBg']}></div>
+                <div className={styles['darkBorderBg']}></div>
+
+                <div className={styles['white']}></div>
+                <div className={styles['border']}></div>
+
+                <div className={styles['inputBox']}>
+                    
+                    <input type="number" name="year" className={styles['input']} placeholder="Year" onChange={handleChange} value={query.year} />
+
+                    <div className={styles['input-mask']}></div>
+                    <div className={styles['pink-mask']}></div>
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                className={styles['searchContent']}
+            >Search</button>
         </form>
     );
 }
