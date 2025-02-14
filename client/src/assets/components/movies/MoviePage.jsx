@@ -87,8 +87,8 @@ export function MoviePage(){
  
 
     const handleSearch = async (query) => {
-        const data = await getMovies(query.name, query.year, query.page);
-        setMovies(data.Search || movieArr); 
+        const data = await getMovies(query.prYear, query.gteYear, query.lteYear, query.page, query.gteVote, query.lteVote);
+        setMovies(data.results || movieArr); 
     };
 
     return (

@@ -1,17 +1,11 @@
-async function DataRequest(type, name, year, page) {
-    const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+async function DataRequest(tupe, prYear='', gteYear='', lteYear='', page = 1, gteVote='', lteVote='') {
 
-    const currentYear = new Date().getFullYear();
+    //const currentYear = new Date().getFullYear();
 
-    let url = `https://www.omdbapi.com/?apikey=${API_KEY}&type=${type}&s=${name}&page=${page}`;
-
-    if (year >= 1900 && year <= currentYear) {
-        url += `&y=${year}`;
-    }
+    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}?prYear=${prYear}&gteYear=${gteYear}&lteYear=${lteYear}&page=${page}&gteVote=${gteVote}&lteVote=${lteVote}`;
 
     const response = await fetch(url);
     const result = await response.json();
-
     return result;
 }
 
@@ -27,5 +21,5 @@ export async function movieByID(id) {
     return result;
 }
 
-export const getMovies = DataRequest.bind(null, 'movie');
-export const getSeries = DataRequest.bind(null, 'series');
+export const getMovies = DataRequest.bind(null, 'movies');
+export const getSeries = DataRequest.bind(null, 'tv');
