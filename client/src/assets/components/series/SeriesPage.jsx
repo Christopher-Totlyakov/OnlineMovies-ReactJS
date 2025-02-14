@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SearchBar } from "../SearchBar";
 import { getSeries } from "../../../api/dataMovies";
-import { MovieList } from "../shared/MovieList";
+import { SeriesList } from "./SeriesList";
 
 const seriesArr =[
     {
@@ -83,15 +83,16 @@ export function SeriesPage(){
  
 
     const handleSearch = async (query) => {
-        const data = await getSeries(query.name, query.year, query.page);
-        setMovies(data.Search || seriesArr); 
+        const data = await getSeries(query.prYear, query.gteYear, query.lteYear, query.page, query.gteVote, query.lteVote);
+        setMovies(data.results || seriesArr); 
+        console.log(data.results);
     };
 
     return (
         <article>
             <h1>series & TV shows</h1>
             <SearchBar onSearch={handleSearch} />
-            <MovieList movies={movies} />
+            <SeriesList movies={movies} />
         </article>
     );
 }

@@ -2,8 +2,6 @@ import { MovieElement } from "./MovieElement";
 import "./MovieList.css"
 
 export function MovieList({ movies }){
-    console.log("''''''''''''''''''''");
-    console.log(movies[0].release_date);
 
     return(
         <div className="movieConteiner">

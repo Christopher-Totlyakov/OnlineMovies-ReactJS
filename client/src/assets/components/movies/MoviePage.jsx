@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SearchBar } from "../SearchBar";
-import { MovieList } from "../shared/MovieList";
+import { MovieList } from "./shared/MovieList";
 import { getMovies } from "../../../api/dataMovies";
 
 import "./MoviePage.css"
