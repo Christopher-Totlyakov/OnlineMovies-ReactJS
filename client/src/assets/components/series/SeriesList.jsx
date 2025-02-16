@@ -1,4 +1,4 @@
-import { MovieElement } from "../movies/shared/MovieElement";
+import { MovieElement } from "../shared/MovieElement";
 
 
 export function SeriesList({ movies }){

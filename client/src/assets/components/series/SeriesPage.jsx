@@ -1,5 +1,5 @@
 import { useLoadContent } from "../../hooks/useLoadContent";
-import { SearchBar } from "../SearchBar";
+import { SearchBar } from "../searchBar/SearchBar";
 import { SeriesList } from "./SeriesList";
 
 export function SeriesPage(){

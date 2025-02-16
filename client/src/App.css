@@ -18,6 +18,10 @@ html {
     box-sizing: border-box;
 }
 
+ #root{
+    width: 100vw;
+}
+
 /*
  * Fix images behaviour - block elements
  * - - - - - - - - - - - */

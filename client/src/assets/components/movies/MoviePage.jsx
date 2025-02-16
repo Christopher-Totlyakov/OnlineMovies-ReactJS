@@ -1,7 +1,7 @@
 import "./MoviePage.css";
 
-import { SearchBar } from "../SearchBar";
-import { MovieList } from "./shared/MovieList";
+import { SearchBar } from "../searchBar/SearchBar";
+import { MovieList } from "./MovieList";
 import { useLoadContent } from "../../hooks/useLoadContent";
 
 export function MoviePage(){

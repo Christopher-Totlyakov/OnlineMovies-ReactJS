@@ -1,4 +1,4 @@
-import { MovieElement } from "./MovieElement";
+import { MovieElement } from "../shared/MovieElement";
 import "./MovieList.css"
 
 export function MovieList({ movies }){
