@@ -70,6 +70,8 @@
   filter: blur(3px);
 }
 .input {
+  display: flex;
+  align-items: center;
   background-color: #010201;
   border: none;
   width: 301px;

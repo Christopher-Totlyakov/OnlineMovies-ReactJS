@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./multiRangeSlider.css";
 import styles from './SearchBar.module.css';
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
+const MultiRangeSlider = ({ min, max, name, onChange }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(min);
@@ -35,8 +35,8 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   }, [maxVal, getPercent]);
 
   useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
+    onChange({ type: name, min: minVal, max: maxVal });
+}, [minVal, maxVal, name, onChange]);
 
   const handleInputChange = (type, value) => {
     const parsedValue = parseInt(value, 10);
