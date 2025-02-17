@@ -9,13 +9,11 @@ export async function DataRequest(tupe, signal, prYear='', gteYear='', lteYear='
     return result;
 }
 
-export async function movieByID(id) {
-    const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+export async function movieDetailsByID(signal, movieId, language="en-US") {
 
+    let url = `https://online-movie-worker.laminex0622.workers.dev/movie/details?id=${movieId}&language=${language}`;
 
-    let url = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
-
-    const response = await fetch(url);
+    const response = await fetch(url, { signal });
     const result = await response.json();
 
     return result;
