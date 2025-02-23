@@ -1,0 +1,18 @@
+.imgBackdrop {
+    position: relative;
+    top: -95px;
+    height: 780px;
+    background-image: var(--backdrop-img);
+    background-position: center;
+    background-size: cover;
+    clip-path: path("M -50 500 C 100 800, 270 300, 450 650 C 500 500, 700 700, 850 600 L 850 100, 850 600 C 950 800, 1370 300, 1850 748 C 2100 400, 2300 1000, 3550 500 L 3550 0, 3550 0 L -50 0 Z");
+}
+
+
+.imgBackdropConteiner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(-1px 6px 3px rgba(255, 255, 255, 0.685));
+    z-index: -1;
+}
