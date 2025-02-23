@@ -1,7 +1,13 @@
 header {
-    display: flex;
-    height: 180px;
+    
     position: relative;
+    height: 180px;
+}
+
+.headerContainer{
+        filter: drop-shadow(-1px 6px 3px rgba(255, 255, 255, 0.767));
+        display: flex;
+        
 }
 
 .header-left {
@@ -15,6 +21,7 @@ header {
 .header-right {
     position: absolute;
     right: 0;
+    top: -120px;
     width: 60vw;
     height: 160px;
     background: linear-gradient(135deg, #720be0, #3973d8);
