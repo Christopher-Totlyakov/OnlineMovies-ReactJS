@@ -1,0 +1,23 @@
+.starContainer {
+    display: inline-block;
+    position: relative;
+    font-size: 36px; 
+    letter-spacing: 2px; 
+    align-self: end;
+}
+
+.grayStars {
+    color: #ccc;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: rgb(255, 0, 0);
+    transition: width 3s ease-in-out;
+    filter: drop-shadow(0 0 10px rgb(255, 0, 0));
+}
