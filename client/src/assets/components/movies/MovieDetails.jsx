@@ -4,6 +4,7 @@ import { movieDetailsByID } from "../../../api/dataMovies"
 
 import style from "./MovieDetails.module.css"
 import StarRating from "../shared/StarRating";
+import MoviePlayer from "../shared/MoviePlayer";
 
 export default function MovieDetails() {
     const [movieDetails, setMovieDetails] = useState({});
@@ -63,6 +64,7 @@ export default function MovieDetails() {
                 </div>
             </div>
 
+            <MoviePlayer movieId="950396" />
 
         </>
 
