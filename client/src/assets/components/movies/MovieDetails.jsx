@@ -46,15 +46,17 @@ export default function MovieDetails() {
                         <img src={`https://image.tmdb.org/t/p/w400${movieDetails.poster_path}`} alt="movie poster" className={style['moviePoster']} />
                         <div className={style['movieOverview']}>
                             <span>
-                            <span className={style['rating']}>rating {movieDetails.vote_average?.toFixed(1)} by 10 </span>
-                            <StarRating rating={movieDetails.vote_average} />
-                            <span className={style['rating']}> from {movieDetails.vote_count} votes</span>
+                                <span className={style['rating']}>rating {movieDetails.vote_average?.toFixed(1)} by 10 </span>
+                                <StarRating rating={movieDetails.vote_average} />
+                                <span className={style['rating']}> from {movieDetails.vote_count} votes</span>
                             </span>
                             <p>{movieDetails.overview}</p>
-                            <span>Ganres: </span>
-                            {movieDetails.genres?.map((x) => <span key={x.id}>{x.name.replace(" ", "-")} </span>)}
-                            <h2>{movieDetails.release_date}</h2>
-                            <h2>{movieDetails.runtime}m</h2>
+                            <div className={style['ganres']}>
+                                <span>Ganres: </span>
+                                {movieDetails.genres?.map((x) => <span key={x.id}>{x.name.replace(" ", "-")} </span>)}
+                            </div>
+                            <p>Release date: {movieDetails.release_date}</p>
+                            <p>Duration: {movieDetails.runtime}m</p>
                         </div>
 
                     </div>
