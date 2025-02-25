@@ -37,26 +37,29 @@ export default function MovieDetails() {
 
                 </div>
             </div>
+            <div className={style['shadowContainer']}>
+                <div className={style['movieInofConteiner']}>
+                    <h1 className={style['title']}>{movieDetails.title}</h1>
 
-            <div className={style['movieInofConteiner']}>
-                <div className={style['headDetails']}>
-                    <h1>{movieDetails.title}</h1>
-                    <h2 className={style['rating']}>rating {movieDetails.vote_average?.toFixed(1)} by 10</h2>
-                    <StarRating rating={movieDetails.vote_average} />
-                    <h2 className={style['rating']}> from {movieDetails.vote_count} votes</h2>
-                </div>
-                <div className={style['headDetails']}>
-                    <img src={`https://image.tmdb.org/t/p/w400${movieDetails.poster_path}`} alt="movie poster" className={style['moviePoster']} />
-                    <div className={style['movieOverview']}>
-                        <p>{movieDetails.overview}</p>
-                        <span>Ganres: </span>
-                        {movieDetails.genres?.map((x) => <span key={x.id}>{x.name}</span>)}
+                    <div className={style['headDetails']}>
+
+                        <img src={`https://image.tmdb.org/t/p/w400${movieDetails.poster_path}`} alt="movie poster" className={style['moviePoster']} />
+                        <div className={style['movieOverview']}>
+                            <span>
+                            <span className={style['rating']}>rating {movieDetails.vote_average?.toFixed(1)} by 10 </span>
+                            <StarRating rating={movieDetails.vote_average} />
+                            <span className={style['rating']}> from {movieDetails.vote_count} votes</span>
+                            </span>
+                            <p>{movieDetails.overview}</p>
+                            <span>Ganres: </span>
+                            {movieDetails.genres?.map((x) => <span key={x.id}>{x.name.replace(" ", "-")} </span>)}
+                            <h2>{movieDetails.release_date}</h2>
+                            <h2>{movieDetails.runtime}m</h2>
+                        </div>
+
                     </div>
-                    <h2>{movieDetails.release_date}</h2>
-                    <h2>{movieDetails.runtime}m</h2>
                 </div>
             </div>
-
 
 
         </>
