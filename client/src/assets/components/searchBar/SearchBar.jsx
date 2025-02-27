@@ -20,7 +20,7 @@ export function SearchBar({ onSearch }) {
 
     const currentYear = new Date().getFullYear();
 
-    
+
     const handleChange = useCallback((e) => {
         if (e.type === "YearRange") {
             setQuery((prev) => ({ ...prev, gteYear: `${e.min}-01-01`, lteYear: `${e.max}-01-01` }));
@@ -37,37 +37,41 @@ export function SearchBar({ onSearch }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles['searchForm']}>
 
-            <TextBox
-                type="text"
-                name="name"
-                placeholder="Keyword..."
-                value={query.name}
-                onChange={handleChange}
-            />
-            <TextBox
-                type="number"
-                name="year"
-                placeholder="Year"
-                value={query.year}
-                onChange={handleChange}
-            />
+            <div>
+                <TextBox
+                    type="text"
+                    name="name"
+                    placeholder="Keyword..."
+                    value={query.name}
+                    onChange={handleChange}
+                />
+                <TextBox
+                    type="number"
+                    name="year"
+                    placeholder="Year"
+                    value={query.year}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label htmlFor="Years">Years</label>
+                <MultiRangeSlider
+                    min={1900}
+                    max={currentYear}
+                    name="YearRange"
+                    onChange={handleChange}
+                />
 
-            <MultiRangeSlider
-                min={1900}
-                max={currentYear}
-                name="YearRange"
-                onChange={handleChange}
-            />
-
-            <MultiRangeSlider
-                min={0}
-                max={10}
-                name="RatingRange"
-                onChange={handleChange}
-            />
-
+                <label htmlFor="Rating">Rating</label>
+                <MultiRangeSlider
+                    min={0}
+                    max={10}
+                    name="RatingRange"
+                    onChange={handleChange}
+                />
+            </div>
             <button
                 type="submit"
                 className={styles['searchContent']}
