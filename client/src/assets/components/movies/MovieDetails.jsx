@@ -64,7 +64,7 @@ export default function MovieDetails() {
                 </div>
             </div>
 
-            <MoviePlayer movieId="950396" />
+            <MoviePlayer movieId={movieDetails.id} />
 
         </>
 

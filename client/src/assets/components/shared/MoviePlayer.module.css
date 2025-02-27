@@ -1,0 +1,75 @@
+.movieConteiner {
+    height: 1200px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: path("M -50 250 C 100 420, 250 50, 450 300 C 700 100, 800 400, 1200 200 L 1200 900, 1200 200 C 1200 200, 1370 600, 1850 252 C 2100 600, 2300 0, 3550 500 L 3550 900 C 3200 700, 2900 1100, 2600 800 C 2300 500, 2000 1050, 1700 850 C 1400 1100, 1100 850, 800 1020 C 500 650, 300 1150, -50 850 Z");
+}
+
+.player {
+    width: 100%;
+    height: 100%;
+}
+
+.shadowContainer {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 0px 3px rgb(0, 0, 0)) drop-shadow(0px 0px 6px rgb(0, 0, 0)) drop-shadow(0px 0px 8px rgb(0, 0, 0)) drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8)) drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+}
+
+.controlerButton {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.controlerButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -4px;
+    top: -1px;
+    margin: auto;
+    width: 128px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.controlerButton::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+}
+
+.controlerButton:hover::after {
+    filter: blur(30px);
+}
+
+.controlerButton:hover::before {
+    transform: rotate(-180deg);
+}
+
+.controlerButton:active::before {
+    scale: 0.7;
+}
