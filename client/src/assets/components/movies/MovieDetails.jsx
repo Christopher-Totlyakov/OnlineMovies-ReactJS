@@ -4,6 +4,7 @@ import { movieDetailsByID } from "../../../api/dataMovies"
 
 import style from "./MovieDetails.module.css"
 import StarRating from "../shared/StarRating";
+import TrailerButton from "./TrailerButton";
 import MoviePlayer from "../shared/MoviePlayer";
 
 export default function MovieDetails() {
@@ -63,6 +64,8 @@ export default function MovieDetails() {
                     </div>
                 </div>
             </div>
+            
+            <TrailerButton />
 
             <MoviePlayer movieId={movieDetails.id} />
 
