@@ -64,12 +64,10 @@ export default function MovieDetails() {
                     </div>
                 </div>
             </div>
-            
-            <TrailerButton />
+
+            <TrailerButton trailerId={movieDetails.trailers?.length > 0 ? movieDetails.trailers[0].key : null} />
 
             <MoviePlayer movieId={movieDetails.id} />
-
         </>
-
     );
 }

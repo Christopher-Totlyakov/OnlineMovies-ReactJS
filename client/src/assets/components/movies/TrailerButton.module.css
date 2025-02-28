@@ -79,9 +79,9 @@
 }
 
 
-/* Затъмнен фон на модала */
 .overlay {
   position: fixed;
+  z-index: 99;
   top: 0;
   left: 0;
   width: 100%;
@@ -93,7 +93,6 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Модал */
 .modal {
   background: white;
   padding: 20px;
@@ -105,7 +104,6 @@
   animation: slideDown 0.3s ease-in-out;
 }
 
-/* Бутон за затваряне */
 .close {
   position: absolute;
   top: 10px;
@@ -116,7 +114,6 @@
   cursor: pointer;
 }
 
-/* Анимация за появяване */
 @keyframes fadeIn {
   from {
     opacity: 0;
