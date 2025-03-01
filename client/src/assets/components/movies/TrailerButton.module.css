@@ -60,7 +60,8 @@
 }
 
 .animated-button:hover .arr-1 {
-  right: -20%;
+  right: -5%;
+  opacity: 0;
 }
 
 .animated-button:hover .arr-2 {
