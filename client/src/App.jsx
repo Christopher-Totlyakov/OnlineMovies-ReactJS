@@ -6,6 +6,7 @@ import { MoviePage } from "./assets/components/movies/MoviePage";
 import { SeriesPage } from "./assets/components/series/SeriesPage";
 import { Footer } from './assets/components/footer/Footer';
 import MovieDetails from './assets/components/movies/MovieDetails';
+import SeriesDetails from './assets/components/series/SeriesDetails';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/movies" element={<MoviePage />}/>
         <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="/series" element={<SeriesPage />} />
+        <Route path="/series/:id" element={<SeriesDetails />} />
       </Routes>
 
       <Footer/>
