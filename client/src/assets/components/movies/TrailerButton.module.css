@@ -1,7 +1,7 @@
 .buttonConteiner{
   display: inline-block;
   top: -250px;
-  left: 1200px;
+  left: 1100px;
   position: relative;
   filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.493));
 }

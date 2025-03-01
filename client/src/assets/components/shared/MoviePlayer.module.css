@@ -22,59 +22,79 @@
     drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
 }
 
-
-.controlerButton {
+.buttonConteiner{
+    display: inline-block;
+    top: -332px;
+    left: 287px;
     position: relative;
-    width: 130px;
-    height: 40px;
-    background-color: #000;
+    filter: drop-shadow(0px 0px 3px rgb(0, 0, 0))
+      drop-shadow(0px 0px 6px rgb(0, 0, 0))
+      drop-shadow(0px 0px 8px rgb(0, 0, 0))
+      drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8))
+      drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+}
+
+.animated-button {
+    position: relative;
     display: flex;
     align-items: center;
-    color: white;
-    flex-direction: column;
     justify-content: center;
-    flex-direction: row;
-    border: none;
-    padding: 12px;
-    gap: 12px;
-    border-radius: 8px;
+    border-color: transparent;
+    font-size: 32px;
+    background-color: rgba(0, 0, 0, 0.521);
+    color: #ffffff;
     cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    clip-path: path("M 0,150 C 200,40 400,30 470,200 C 250,270 150,270 0,150 Z");
+    width: 470px;
+    height: 300px;
 }
 
-.controlerButton::before {
-    content: '';
+.animated-button svg {
     position: absolute;
-    inset: 0;
-    left: -4px;
-    top: -1px;
-    margin: auto;
-    width: 138px;
-    height: 48px;
-    border-radius: 10px;
-    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
-    z-index: -10;
-    pointer-events: none;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    fill: #ffffff;
+    width: 30px;
+    height: 30px;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.controlerButton::after {
-    content: "";
-    z-index: -1;
+.animated-button .increaseSvg {
+    right: 80px;
+}
+
+.animated-button .circle {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
-    transform: translate3d(0, 0, 0) scale(0.95);
-    filter: blur(20px);
+    top: 50%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #c90f0f;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.controlerButton:hover::after {
-    filter: blur(30px);
+.animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    font-size: 0.8em;
 }
 
-.controlerButton:hover::before {
-    transform: rotate(-180deg);
+.animated-button:hover .increaseSvg {
+    right: -20%;
 }
 
-.controlerButton:active::before {
-    scale: 0.7;
+.animated-button:hover .text {
+    transform: translateX(12px);
+}
+
+.animated-button:hover .circle {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 20px 10px #ffffff;
+    opacity: 1;
 }
