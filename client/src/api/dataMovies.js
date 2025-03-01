@@ -9,9 +9,9 @@ export async function DataRequest(tupe, signal, prYear='', gteYear='', lteYear='
     return result;
 }
 
-export async function movieDetailsByID(signal, movieId, language="en-US") {
+export async function movieDetailsByID(tupe, signal, movieId, language="en-US") {
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/movie/details?id=${movieId}&language=${language}`;
+    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/details?id=${movieId}&language=${language}`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
@@ -21,3 +21,6 @@ export async function movieDetailsByID(signal, movieId, language="en-US") {
 
 export const getMovies = DataRequest.bind(null, 'movies');
 export const getSeries = DataRequest.bind(null, 'tv');
+
+export const getMoviesByID = movieDetailsByID.bind(null, 'movies');
+export const getSeriesByID = movieDetailsByID.bind(null, 'tv');
