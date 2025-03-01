@@ -12,7 +12,7 @@ export default function SeriesDetails() {
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading movie details.</p>;
-
+    
     return (
         <>
             <div className={style['imgBackdropConteiner']} >
@@ -24,7 +24,7 @@ export default function SeriesDetails() {
             </div>
             <div className={style['shadowContainer']}>
                 <div className={style['movieInofConteiner']}>
-                    <h1 className={style['title']}>{movieDetails.title}</h1>
+                    <h1 className={style['title']}>{movieDetails.original_name}</h1>
 
                     <div className={style['headDetails']}>
 
@@ -40,8 +40,9 @@ export default function SeriesDetails() {
                                 <span>Ganres: </span>
                                 {movieDetails.genres?.map((x) => <span key={x.id}>{x.name.replace(" ", "-")} </span>)}
                             </div>
-                            <p>Release date: {movieDetails.release_date}</p>
-                            <p>Duration: {movieDetails.runtime}m</p>
+                            <p>Release date: {movieDetails.first_air_date}</p>
+                            <p>Seasens: {movieDetails.number_of_seasons}</p>
+                            <p>Episodes: {movieDetails.number_of_episodes}</p>
                         </div>
 
                     </div>
@@ -50,7 +51,7 @@ export default function SeriesDetails() {
 
             <TrailerButton trailerId={movieDetails.trailers?.length > 0 ? movieDetails.trailers[0].key : null} />
 
-            <MoviePlayer movieId={movieDetails.id} />
+            <MoviePlayer type="tv" movieId={movieDetails.id} />
         </>
     );
 }

@@ -1,11 +1,34 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "./MoviePlayer.module.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const MoviePlayer = ({ movieId }) => {
+const MoviePlayer = ({ type, movieId }) => {
   if (!movieId) return <p>The movie will be added.</p>;
 
-  const embedUrl = `https://vidsrc.icu/embed/movie/${movieId}`;
   const iframeRef = useRef(null);
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialSeason = searchParams.get("season") || 1;
+  const initialEpisode = searchParams.get("episode") || 1;
+
+  const [currentSeason, setCurrentSeason] = useState(initialSeason);
+  const [currentEpisode, setCurrentEpisode] = useState(initialEpisode);
+
+  let embedUrl = `https://vidsrc.icu/embed/${type}/${movieId}`;
+  if (type === "tv") {
+    useEffect(() => {
+      navigate(
+        {
+          pathname: window.location.pathname,
+          search: `?season=${currentSeason}&episode=${currentEpisode}`,
+        },
+        { replace: false }
+      );
+    }, [currentSeason, currentEpisode, navigate]);
+
+    embedUrl += `/${currentSeason}/${currentEpisode}`;
+  }
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -40,7 +63,7 @@ const MoviePlayer = ({ movieId }) => {
           >
             <span className={style["text"]}>F U L L S C R E E N</span>
             <span className={style["circle"]} />
-            <svg
+<svg
               className={style["increaseSvg"]}
               viewBox="0 0 24 24"
               fill="none"
@@ -66,6 +89,26 @@ const MoviePlayer = ({ movieId }) => {
             </svg>
           </button>
         </div>
+
+        {type === "tv" && (
+          <div className={style["inputContainer"]}>
+            <label>Season: </label>
+            <input
+              type="number"
+              min="1"
+              value={initialSeason}
+              onChange={(e) => setCurrentSeason(e.target.value)}
+            />
+
+            <label>Episode: </label>
+            <input
+              type="number"
+              min="1"
+              value={initialEpisode}
+              onChange={(e) => setCurrentEpisode(e.target.value)}
+            />
+          </div>
+        )}
       </div>
     </>
   );
