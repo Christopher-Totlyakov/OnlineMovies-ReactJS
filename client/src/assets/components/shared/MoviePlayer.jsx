@@ -18,13 +18,23 @@ const MoviePlayer = ({ type, movieId }) => {
   let embedUrl = `https://vidsrc.icu/embed/${type}/${movieId}`;
   if (type === "tv") {
     useEffect(() => {
-      navigate(
-        {
-          pathname: window.location.pathname,
-          search: `?season=${currentSeason}&episode=${currentEpisode}`,
-        },
-        { replace: false }
-      );
+      if (!searchParams.has("season") || !searchParams.has("episode")) {
+        navigate(
+          {
+            pathname: window.location.pathname,
+            search: `?season=${currentSeason}&episode=${currentEpisode}`,
+          },
+          { replace: true }
+        );
+      } else {
+        navigate(
+          {
+            pathname: window.location.pathname,
+            search: `?season=${currentSeason}&episode=${currentEpisode}`,
+          },
+          { replace: false }
+        );
+      }
     }, [currentSeason, currentEpisode, navigate]);
 
     embedUrl += `/${currentSeason}/${currentEpisode}`;
@@ -63,7 +73,7 @@ const MoviePlayer = ({ type, movieId }) => {
           >
             <span className={style["text"]}>F U L L S C R E E N</span>
             <span className={style["circle"]} />
-<svg
+            <svg
               className={style["increaseSvg"]}
               viewBox="0 0 24 24"
               fill="none"
