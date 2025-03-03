@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import style from "./MoviePlayer.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+import style from "./MoviePlayer.module.css";
 
 const MoviePlayer = ({ type, movieId }) => {
   if (!movieId) return <p>The movie will be added.</p>;
@@ -102,21 +103,30 @@ const MoviePlayer = ({ type, movieId }) => {
 
         {type === "tv" && (
           <div className={style["inputContainer"]}>
-            <label>Season: </label>
-            <input
-              type="number"
-              min="1"
-              value={initialSeason}
-              onChange={(e) => setCurrentSeason(e.target.value)}
-            />
-
-            <label>Episode: </label>
-            <input
-              type="number"
-              min="1"
-              value={initialEpisode}
-              onChange={(e) => setCurrentEpisode(e.target.value)}
-            />
+            <div className={style['inpytNumber']}>
+              <label>Season: </label>
+              <input
+                type="number"
+                min="1"
+                value={initialSeason}
+                onChange={(e) => setCurrentSeason(e.target.value)}
+              />
+              <div className={style['circleContainer']}>
+                <span className={style["numberInpytCircle"]} />
+              </div>
+            </div>
+            <div className={style['inpytNumber']}>
+              <label>Episode: </label>
+              <input
+                type="number"
+                min="1"
+                value={initialEpisode}
+                onChange={(e) => setCurrentEpisode(e.target.value)}
+              />
+              <div className={style['circleContainer']}>
+                <span className={style["numberInpytCircle"]} />
+              </div>
+            </div>
           </div>
         )}
       </div>
