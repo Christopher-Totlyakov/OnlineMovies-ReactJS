@@ -22,13 +22,14 @@ export default function TrailerButton({trailerId}) {
      
     </div>
      {isOpen && (     
-      <div className={style.overlay} onClick={() => setIsOpen(false)}>
-        <div className={style.modal} onClick={(e) => e.stopPropagation()}>
-          <button className={style.close} onClick={() => setIsOpen(false)}>✖</button>
+      <div className={style['overlay']} onClick={() => setIsOpen(false)}>
+        <div className={style['modal']} onClick={(e) => e.stopPropagation()}>
+          <button className={style['close']} onClick={() => setIsOpen(false)}>✖</button>
           <h2>Official Trailer</h2>
           <iframe
+            className={style['modal']}
             width="100%"
-            height="315"
+            height="100%"
             src={`https://www.youtube.com/embed/${trailerId}`}
             title="Trailer"
             frameBorder="0"
