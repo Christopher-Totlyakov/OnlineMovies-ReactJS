@@ -1,7 +1,11 @@
-export function Footer(){
-    return(
+import "./Footer.css"
+
+export function Footer() {
+    return (
         <footer>
-            <h1>Creator</h1>
+            <div className="footerDivElement">
+                <h1>Online Movie</h1>
+            </div>
         </footer>
     );
 }
