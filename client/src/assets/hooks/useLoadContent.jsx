@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-
 import { DataRequest } from "../../api/dataMovies";
 
 export function useLoadContent(type, initialSeries = []) {
     const [movies, setMovies] = useState(initialSeries);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [query, setQuery] = useState({}); 
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const page = Number(searchParams.get("page")) || 1; // Четем `page` от URL
+    const [query, setQuery] = useState({});
 
     useEffect(() => {
         const controller = new AbortController();
@@ -33,8 +34,12 @@ export function useLoadContent(type, initialSeries = []) {
     }, [type, page, query]);
 
     const searchContent = async (newQuery) => {
-        setQuery(newQuery); 
-        setPage(1);
+        setQuery(newQuery);
+        setSearchParams({ page: 1 });
+    };
+
+    const setPage = (newPage) => {
+        setSearchParams({ page: newPage });
     };
 
     return { movies, searchContent, loading, error, page, setPage, totalPages };

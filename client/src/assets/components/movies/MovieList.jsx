@@ -1,8 +1,7 @@
 import { MovieElement } from "../shared/MovieElement";
-import "./MovieList.css"
+import "./MovieList.css";
 
-export function MovieList({ movies, page,  setPage, totalPages }) {
-
+export function MovieList({ movies, page, setPage, totalPages }) {
     return (
         <>
             <div className="movieConteiner">
@@ -12,12 +11,12 @@ export function MovieList({ movies, page,  setPage, totalPages }) {
                     <p>No results found.</p>
                 )}
             </div>
-             <div className="pagination">
-                <button disabled={page <= 1} onClick={() => setPage((prev) => Math.max(1, prev - 1))}>
+            <div className="pagination">
+                <button disabled={page <= 1} onClick={() => setPage(page - 1)}>
                     Предишна
                 </button>
                 <span>Страница {page} от {totalPages}</span>
-                <button disabled={page >= totalPages} onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}>
+                <button disabled={page >= totalPages} onClick={() => setPage(page + 1)}>
                     Следваща
                 </button>
             </div>
