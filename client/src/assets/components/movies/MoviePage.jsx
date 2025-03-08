@@ -5,7 +5,7 @@ import { MovieList } from "./MovieList";
 import { useLoadContent } from "../../hooks/useLoadContent";
 
 export function MoviePage(){
-    const { movies, searchContent, loading, error } = useLoadContent('movies', []);
+    const { movies, searchContent, loading, error, page, setPage, totalPages } = useLoadContent('movies', []);
 
     const handleSearch = (query) => {
         searchContent(query);
@@ -17,7 +17,7 @@ export function MoviePage(){
             <SearchBar onSearch={handleSearch} />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <MovieList movies={movies} />
+            <MovieList movies={movies} curentPage={page} setPage={setPage} totalPages={totalPages} />
         </article>
     );
 }
