@@ -9,8 +9,15 @@ export function useLoadContent(type, initialSeries = []) {
     const [totalPages, setTotalPages] = useState(1);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const page = Number(searchParams.get("page")) || 1; // Четем `page` от URL
-    const [query, setQuery] = useState({});
+    const page = Number(searchParams.get("page")) || 1;
+    const [query, setQuery] = useState({
+        page: 1,
+        prYear: "",
+        gteYear: "1900-01-01",
+        lteYear: "2025-01-01",
+        gteVote: "",
+        lteVote: "10"
+    });
 
     useEffect(() => {
         const controller = new AbortController();
