@@ -3,7 +3,7 @@ import { SearchBar } from "../searchBar/SearchBar";
 import { SeriesList } from "./SeriesList";
 
 export function SeriesPage(){
-  const { movies, searchContent, loading, error } = useLoadContent('tv', []);
+    const { movies, searchContent, loading, error, page, setPage, totalPages } = useLoadContent('tv', []);
 
   const handleSearch = (query) => {
       searchContent(query);
@@ -15,7 +15,7 @@ export function SeriesPage(){
             <SearchBar onSearch={handleSearch} />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <SeriesList movies={movies} />
+            <SeriesList movies={movies} page={page} setPage={setPage} totalPages={totalPages} />
         </article>
     );
 }

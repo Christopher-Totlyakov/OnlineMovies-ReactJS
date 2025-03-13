@@ -1,4 +1,6 @@
 import { MovieElement } from "../shared/MovieElement";
+import Pagination from "../shared/Pagination";
+
 import "./MovieList.css";
 
 export function MovieList({ movies, page, setPage, totalPages }) {
@@ -11,15 +13,7 @@ export function MovieList({ movies, page, setPage, totalPages }) {
                     <p>No results found.</p>
                 )}
             </div>
-            <div className="pagination">
-                <button disabled={page <= 1} onClick={() => setPage(page - 1)}>
-                    Предишна
-                </button>
-                <span>Страница {page} от {totalPages}</span>
-                <button disabled={page >= totalPages} onClick={() => setPage(page + 1)}>
-                    Следваща
-                </button>
-            </div>
+            <Pagination page={page} setPage={setPage} totalPages={totalPages} />
         </>
     );
 }
