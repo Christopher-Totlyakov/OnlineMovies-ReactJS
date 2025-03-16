@@ -20,6 +20,18 @@ export async function movieDetailsByID(tupe, signal, movieId, language = "en-US"
     return result;
 }
 
+export async function movieTrending(tupe, signal) {
+
+    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/trending?time=day`;
+
+    const response = await fetch(url, { signal });
+    const result = await response.json();
+
+    return result;
+}
+
+
+
 export const getMovies = DataRequest.bind(null, 'movies');
 export const getSeries = DataRequest.bind(null, 'tv');
 
