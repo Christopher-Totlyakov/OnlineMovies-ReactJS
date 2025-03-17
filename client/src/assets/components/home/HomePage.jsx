@@ -6,9 +6,10 @@ export function HomePage() {
     const { details: tvDetails, loading: tvLoading, error: tvError } = useLoadTrending("tv");
     console.log(movieDetails)
     console.log(tvDetails)
-    return(
-        <article>
-            <h1>Home</h1>
-        </article>
+    return (
+        <>
+            {movieDetails && <Slider details={movieDetails} isReverse={false} />}
+            {tvDetails && <Slider details={tvDetails} isReverse={true} />}
+        </>
     );
 }
