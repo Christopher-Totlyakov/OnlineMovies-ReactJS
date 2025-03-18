@@ -7,6 +7,18 @@ export function useLoadTrending(type) {
         const [error, setError] = useState(null);
 
     useEffect(() => {
+        const cacheKey = `trending_${type}`;
+        const cacheDateKey = `${cacheKey}_date`;
+
+        const cachedData = localStorage.getItem(cacheKey);
+        const cachedDate = localStorage.getItem(cacheDateKey);
+        const today = new Date().toISOString().split("T")[0];
+
+        if (cachedData && cachedDate === today) {
+            setDetails(JSON.parse(cachedData));
+            setLoading(false);
+            return;
+        }
 
         const controller = new AbortController();
 
@@ -14,6 +26,10 @@ export function useLoadTrending(type) {
             try {
                 setLoading(true);
                 const response = await movieTrending(type, controller.signal);
+                
+                localStorage.setItem(cacheKey, JSON.stringify(response));
+                localStorage.setItem(cacheDateKey, today); // Запазваме само датата
+
                 setDetails(response);
             } catch (err) {
                 if (err.name !== "AbortError") {
