@@ -4,8 +4,7 @@ import { Slider } from "./Slider";
 export function HomePage() {
     const { details: movieDetails, loading: movieLoading, error: movieError } = useLoadTrending("movie");
     const { details: tvDetails, loading: tvLoading, error: tvError } = useLoadTrending("tv");
-    console.log(movieDetails)
-    console.log(tvDetails)
+    
     return (
         <>
             {movieDetails && <Slider details={movieDetails} isReverse={false} />}

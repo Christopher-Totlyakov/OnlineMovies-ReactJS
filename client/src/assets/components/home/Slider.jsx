@@ -6,13 +6,13 @@ export function Slider({ details, isReverse }) {
     }
 
     return (
-        <article>
+        <article className="sliderTrending">
             <div
                 className={`sliderServices ${isReverse ? "reverse" : ""}`}
                 data-reverse={isReverse ? "true" : "false"}
                 style={{
-                    "--width": "200px",
-                    "--height": "270px",
+                    "--width": "850px",
+                    "--height": "470px",
                     "--quantity": details.results.length,
                 }}
             >
@@ -22,7 +22,7 @@ export function Slider({ details, isReverse }) {
                             <img src={`https://image.tmdb.org/t/p/w400${item.backdrop_path}`} alt={item.name} />
 
                             <p>{item.media_type === "tv" ? item.name : item.title}</p>
-                            <button></button>
+                            
                         </div>
                     ))}
                 </div>
