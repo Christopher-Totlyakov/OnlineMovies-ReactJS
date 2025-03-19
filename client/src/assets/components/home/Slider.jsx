@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Slider.css";
 
 export function Slider({ details, isReverse }) {
@@ -18,12 +19,19 @@ export function Slider({ details, isReverse }) {
             >
                 <div className="list">
                     {details.results.map((item, index) => (
-                        <div key={index} className="service" style={{ "--position": index + 1 }}>
-                            <img src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`} alt={item.name} />
-
-                            <p>{item.media_type === "tv" ? item.name : item.title}</p>
-                            
-                        </div>
+                        <Link 
+                            to={`/${item.media_type === "tv" ? "series" : "movies"}/${item.id}`}
+                            key={index}
+                            className="service"
+                            style={{ "--position": index + 1 }}
+                        >
+                            <img
+                                src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`}
+                                alt={item.name || item.title}
+                            />
+                            <p className="title">{item.media_type === "tv" ? item.name : item.title}</p>
+                            <div className="hoverImage" style={{ backgroundImage: `url('./public/playButton.png')` }}></div>
+                        </Link>
                     ))}
                 </div>
             </div>
