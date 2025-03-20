@@ -1,0 +1,9 @@
+.pagination{
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.pagination input{
+    width: 60px;
+}
