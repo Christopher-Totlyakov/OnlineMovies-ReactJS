@@ -16,7 +16,8 @@ export function useLoadContent(type, initialSeries = []) {
         gteYear: "1900-01-01",
         lteYear: "2025-01-01",
         gteVote: "",
-        lteVote: "10"
+        lteVote: "10",
+        name: "",
     });
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export function useLoadContent(type, initialSeries = []) {
         (async () => {
             try {
                 setLoading(true);
-                const data = await DataRequest(type, controller.signal, query.prYear, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote);
+                const data = await DataRequest(type, controller.signal, query.prYear, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote, query.name);
                 setMovies(data.results || []);
                 setTotalPages(data.total_pages || 1);
             } catch (err) {

@@ -9,7 +9,7 @@ export function SearchBar({ onSearch }) {
     const [query, setQuery] = useState
         ({
             type: "movie",
-            name: "",
+            name: '',
             prYear: '',
             gteYear: '',
             lteYear: '',
@@ -49,7 +49,7 @@ export function SearchBar({ onSearch }) {
                 />
                 <TextBox
                     type="number"
-                    name="year"
+                    name="prYear"
                     placeholder="Year"
                     value={query.year}
                     onChange={handleChange}
