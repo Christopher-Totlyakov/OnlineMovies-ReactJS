@@ -96,10 +96,10 @@ background-size: contain;
 background-position: center;
 background-repeat: no-repeat;
 background-image: url("/playButton.png");
-animation: rotate360 2s linear infinite;
+animation: rotate360movieElement 2s linear infinite;
 }
 
-@keyframes rotate360 {
+@keyframes rotate360movieElement {
   0% {
     transform: rotate(0deg) scale(1.5);
   }
