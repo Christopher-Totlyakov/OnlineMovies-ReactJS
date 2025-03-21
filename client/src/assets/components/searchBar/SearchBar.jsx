@@ -1,24 +1,24 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 import styles from './components/SearchBar.module.css';
 import MultiRangeSlider from "./components/MultiRangeSlider";
 import TextBox from "./components/TextBox";
 
 export function SearchBar({ onSearch }) {
-    const [query, setQuery] = useState({
-        type: "movie",
-        name: '',
-        year: '',
-        gteYear: '',
-        lteYear: '',
-        page: 1,
-        gteVote: '',
-        lteVote: '',
-    });
-
+    const [query, setQuery] = useState(getInitialQuery("basic")); 
     const [searchMode, setSearchMode] = useState("basic");
-
     const currentYear = new Date().getFullYear();
+
+    function getInitialQuery(mode) {
+        return mode === "basic"
+            ? { type: "movie", name: '', year: '', page: 1 }
+            : { type: "movie", gteYear: '', lteYear: '', gteVote: '', lteVote: '', page: 1 };
+            
+    }
+    
+    useEffect(() => {
+        setQuery(getInitialQuery(searchMode));
+    }, [searchMode]);
 
     const handleChange = useCallback((e) => {
         if (e.type === "YearRange") {
@@ -26,27 +26,14 @@ export function SearchBar({ onSearch }) {
         } else if (e.type === "RatingRange") {
             setQuery((prev) => ({ ...prev, gteVote: e.min, lteVote: e.max }));
         } else {
-            setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+            setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value || '' }));
         }
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        let filteredQuery = { ...query };
-
-        if (searchMode === "basic") {
-            delete filteredQuery.gteYear;
-            delete filteredQuery.lteYear;
-            delete filteredQuery.gteVote;
-            delete filteredQuery.lteVote;
-        } else if (searchMode === "advanced") {
-            delete filteredQuery.name;
-            delete filteredQuery.year;
-        }
-        onSearch(filteredQuery);
+        onSearch(query);
     };
-
 
     return (
         <form onSubmit={handleSubmit} className={styles['searchForm']}>
@@ -84,14 +71,16 @@ export function SearchBar({ onSearch }) {
                         type="text"
                         name="name"
                         placeholder="Keyword..."
-                        value={query.name}
+                        required={true}
+                        value={query.name || ''}
                         onChange={handleChange}
                     />
                     <TextBox
                         type="number"
                         name="year"
                         placeholder="Year"
-                        value={query.year}
+                        required={false}
+                        value={query.year || ''}
                         onChange={handleChange}
                     />
                 </div>
