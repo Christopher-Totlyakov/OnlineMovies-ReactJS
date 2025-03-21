@@ -414,3 +414,10 @@
   z-index: 77;
   bottom: -45px;
 }
+
+.input:-webkit-autofill {
+  background-color: transparent !important;
+  color: white !important;
+  -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
