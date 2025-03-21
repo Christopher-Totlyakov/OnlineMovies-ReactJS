@@ -14,7 +14,7 @@ export default function TextBox({type, name, placeholder, onChange, value}) {
             <div className={styles['border']}></div>
 
             <div className={styles['inputBox']}>
-                <input type={type} name={name} className={styles['input']} placeholder={placeholder} onChange={onChange} value={value} />
+                <input type={type} required={true} name={name} className={styles['input']} placeholder={placeholder} onChange={onChange} value={value} />
 
                 <div className={styles['input-mask']}></div>
                 <div className={styles['pink-mask']}></div>

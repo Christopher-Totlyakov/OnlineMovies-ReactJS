@@ -26,7 +26,7 @@ export function useLoadContent(type, initialSeries = []) {
         (async () => {
             try {
                 setLoading(true);
-                const data = await DataRequest(type, controller.signal, query.prYear, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote, query.name);
+                const data = await DataRequest(type, controller.signal, query.year, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote, query.name);
                 setMovies(data.results || []);
                 setTotalPages(data.total_pages || 1);
             } catch (err) {

@@ -1,8 +1,8 @@
-export async function DataRequest(tupe, signal, prYear = '', gteYear = '', lteYear = '', page = 1, gteVote = '', lteVote = '',name ='') {
+export async function DataRequest(tupe, signal, year = '', gteYear = '', lteYear = '', page = 1, gteVote = '', lteVote = '',name ='') {
 
     //const currentYear = new Date().getFullYear();
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}?prYear=${prYear}&gteYear=${gteYear}&lteYear=${lteYear}&page=${page}&gteVote=${gteVote}&lteVote=${lteVote}&name=${name}`;
+    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}?year=${year}&gteYear=${gteYear}&lteYear=${lteYear}&page=${page}&gteVote=${gteVote}&lteVote=${lteVote}&name=${name}`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();

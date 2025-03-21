@@ -8,7 +8,7 @@ export function SearchBar({ onSearch }) {
     const [query, setQuery] = useState({
         type: "movie",
         name: '',
-        prYear: '',
+        year: '',
         gteYear: '',
         lteYear: '',
         page: 1,
@@ -16,7 +16,7 @@ export function SearchBar({ onSearch }) {
         lteVote: '',
     });
 
-    const [searchMode, setSearchMode] = useState("basic"); // "basic" или "advanced"
+    const [searchMode, setSearchMode] = useState("basic");
 
     const currentYear = new Date().getFullYear();
 
@@ -32,8 +32,21 @@ export function SearchBar({ onSearch }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSearch(query);
+
+        let filteredQuery = { ...query };
+
+        if (searchMode === "basic") {
+            delete filteredQuery.gteYear;
+            delete filteredQuery.lteYear;
+            delete filteredQuery.gteVote;
+            delete filteredQuery.lteVote;
+        } else if (searchMode === "advanced") {
+            delete filteredQuery.name;
+            delete filteredQuery.year;
+        }
+        onSearch(filteredQuery);
     };
+
 
     return (
         <form onSubmit={handleSubmit} className={styles['searchForm']}>
@@ -65,7 +78,6 @@ export function SearchBar({ onSearch }) {
                 </label>
             </div>
 
-            {/* Basic Search */}
             {searchMode === "basic" && (
                 <div className={styles["inputsConteiner"]}>
                     <TextBox
@@ -77,15 +89,14 @@ export function SearchBar({ onSearch }) {
                     />
                     <TextBox
                         type="number"
-                        name="prYear"
+                        name="year"
                         placeholder="Year"
-                        value={query.prYear}
+                        value={query.year}
                         onChange={handleChange}
                     />
                 </div>
             )}
 
-            {/* Advanced Search */}
             {searchMode === "advanced" && (
                 <div className={styles["inputsConteiner"]}>
                     <label htmlFor="Years">
