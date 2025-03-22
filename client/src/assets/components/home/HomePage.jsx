@@ -1,5 +1,5 @@
 import { useLoadTrending } from "../../hooks/useLoadTrending";
-import { Slider } from "./Slider";
+import { Slider } from "../shared/Slider";
 import "./HomePage.css"
 
 export function HomePage() {

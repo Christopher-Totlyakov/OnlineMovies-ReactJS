@@ -30,7 +30,7 @@ export function Slider({ details, isReverse }) {
                                 alt={item.name || item.title}
                             />
                             <p className="title">{item.media_type === "tv" ? item.name : item.title}</p>
-                            <div className="hoverImage" style={{ backgroundImage: `url('./public/playButton.png')` }}></div>
+                            <div className="hoverImage" style={{ backgroundImage: `url('/playButton.png')` }}></div>
                         </Link>
                     ))}
                 </div>
