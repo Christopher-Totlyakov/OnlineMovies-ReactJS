@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovieDetails";
+import { useLoadeRecommendations } from "../../hooks/useLoadeRecommendations";
+import { Slider } from "../shared/Slider";
 
 import style from "../movies/MovieDetails.module.css"
 import StarRating from "../shared/StarRating";
@@ -9,10 +11,11 @@ import MoviePlayer from "../shared/MoviePlayer";
 export default function SeriesDetails() {
     const { id } = useParams();
     const { movieDetails, loading, error } = useMovieDetails("tv", id);
+    const { movie, loadingRecommendations, errorRecommendations } = useLoadeRecommendations("tv", id);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading movie details.</p>;
-    
+
     return (
         <>
             <div className={style['imgBackdropConteiner']} >
@@ -52,6 +55,8 @@ export default function SeriesDetails() {
             <TrailerButton trailerId={movieDetails.trailers?.length > 0 ? movieDetails.trailers[0].key : null} />
 
             <MoviePlayer type="tv" movieId={movieDetails.id} />
+
+            {movie && <Slider details={movie} isReverse={false} />}
         </>
     );
 }

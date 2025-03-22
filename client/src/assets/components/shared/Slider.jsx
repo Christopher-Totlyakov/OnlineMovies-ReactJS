@@ -4,6 +4,8 @@ import "./Slider.css";
 export function Slider({ details, isReverse }) {
     if (!details || !details.results) {
         return <p>Loading...</p>;
+    } else if (details.results.length <= 0) {
+        return;
     }
 
     return (
