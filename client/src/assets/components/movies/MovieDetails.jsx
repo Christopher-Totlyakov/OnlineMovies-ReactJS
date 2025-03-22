@@ -18,13 +18,14 @@ export default function MovieDetails() {
 
     return (
         <>
+            {movieDetails.backdrop_path &&
             <div className={style['imgBackdropConteiner']} >
                 <div
                     className={style['imgBackdrop']}
                     style={{ '--backdrop-img': `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path})` }}>
 
                 </div>
-            </div>
+            </div>}
             <div className={style['shadowContainer']}>
                 <div className={style['movieInofConteiner']}>
                     <h1 className={style['title']}>{movieDetails.title}</h1>
