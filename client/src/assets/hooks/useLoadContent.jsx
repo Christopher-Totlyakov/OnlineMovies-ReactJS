@@ -57,15 +57,19 @@ export function useLoadContent(type, initialSeries = []) {
 
     const searchContent = async (newQuery) => {
         setQuery(newQuery);
-        setSearchParams({
-            page: 1,
-            name: newQuery.name || "",
-            year: newQuery.year || "",
-            gteYear: newQuery.gteYear || "",
-            lteYear: newQuery.lteYear || "",
-            gteVote: newQuery.gteVote || "",
-            lteVote: newQuery.lteVote || ""
-        });
+
+        const updatedParams = {};
+
+        if (newQuery.name) updatedParams.name = newQuery.name;
+        if (newQuery.year) updatedParams.year = newQuery.year;
+        if (newQuery.gteYear && newQuery.gteYear !== "1900-01-01") updatedParams.gteYear = newQuery.gteYear;
+        if (newQuery.lteYear && newQuery.lteYear !== "2025-01-01") updatedParams.lteYear = newQuery.lteYear;
+        if (newQuery.gteVote) updatedParams.gteVote = newQuery.gteVote;
+        if (newQuery.lteVote && newQuery.lteVote !== "10") updatedParams.lteVote = newQuery.lteVote;
+
+        updatedParams.page = 1; 
+
+        setSearchParams(updatedParams);
     };
 
     const setPage = (newPage) => {
@@ -73,6 +77,13 @@ export function useLoadContent(type, initialSeries = []) {
             const updatedParams = new URLSearchParams(prevParams);
 
             updatedParams.set("page", newPage);
+
+            if (!updatedParams.get("name")) updatedParams.delete("name");
+            if (!updatedParams.get("year")) updatedParams.delete("year");
+            if (!updatedParams.get("gteYear") || updatedParams.get("gteYear") === "1900-01-01") updatedParams.delete("gteYear");
+            if (!updatedParams.get("lteYear") || updatedParams.get("lteYear") === "2025-01-01") updatedParams.delete("lteYear");
+            if (!updatedParams.get("gteVote")) updatedParams.delete("gteVote");
+            if (!updatedParams.get("lteVote") || updatedParams.get("lteVote") === "10") updatedParams.delete("lteVote");
 
             return updatedParams;
         });
