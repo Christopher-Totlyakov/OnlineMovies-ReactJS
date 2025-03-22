@@ -1,10 +1,12 @@
 import { useCallback, useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import styles from './components/SearchBar.module.css';
 import MultiRangeSlider from "./components/MultiRangeSlider";
 import TextBox from "./components/TextBox";
 
 export function SearchBar({ onSearch }) {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState(getInitialQuery("basic")); 
     const [searchMode, setSearchMode] = useState("basic");
     const currentYear = new Date().getFullYear();
@@ -32,8 +34,18 @@ export function SearchBar({ onSearch }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSearchParams({
+            page: 1,
+            name: query.name || "",
+            year: query.year || "",
+            gteYear: query.gteYear || "",
+            lteYear: query.lteYear || "",
+            gteVote: query.gteVote || "",
+            lteVote: query.lteVote || ""
+        });
         onSearch(query);
     };
+
 
     return (
         <form onSubmit={handleSubmit} className={styles['searchForm']}>

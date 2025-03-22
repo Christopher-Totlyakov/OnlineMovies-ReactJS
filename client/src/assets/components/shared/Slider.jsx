@@ -5,7 +5,7 @@ export function Slider({ details, isReverse }) {
     if (!details || !details.results) {
         return <p>Loading...</p>;
     } else if (details.results.length <= 0) {
-        return;
+        return <p>no results at the moment</p>;;
     }
 
     return (

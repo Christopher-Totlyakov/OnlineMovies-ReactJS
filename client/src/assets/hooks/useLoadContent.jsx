@@ -10,14 +10,15 @@ export function useLoadContent(type, initialSeries = []) {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Number(searchParams.get("page")) || 1;
+
     const [query, setQuery] = useState({
-        page: 1,
-        prYear: "",
-        gteYear: "1900-01-01",
-        lteYear: "2025-01-01",
-        gteVote: "",
-        lteVote: "10",
-        name: "",
+        page: page,
+        year: searchParams.get("year") || "",
+        gteYear: searchParams.get("gteYear") || "1900-01-01",
+        lteYear: searchParams.get("lteYear") || "2025-01-01",
+        gteVote: searchParams.get("gteVote") || "",
+        lteVote: searchParams.get("lteVote") || "10",
+        name: searchParams.get("name") || "",
     });
 
     useEffect(() => {
@@ -41,14 +42,42 @@ export function useLoadContent(type, initialSeries = []) {
         return () => controller.abort();
     }, [type, page, query]);
 
+    useEffect(() => {
+        const newQuery = {
+            page: page,
+            year: searchParams.get("year") || "",
+            gteYear: searchParams.get("gteYear") || "1900-01-01",
+            lteYear: searchParams.get("lteYear") || "2025-01-01",
+            gteVote: searchParams.get("gteVote") || "",
+            lteVote: searchParams.get("lteVote") || "10",
+            name: searchParams.get("name") || "",
+        };
+        setQuery(newQuery); 
+    }, [searchParams, page]);
+
     const searchContent = async (newQuery) => {
         setQuery(newQuery);
-        setSearchParams({ page: 1 });
+        setSearchParams({
+            page: 1,
+            name: newQuery.name || "",
+            year: newQuery.year || "",
+            gteYear: newQuery.gteYear || "",
+            lteYear: newQuery.lteYear || "",
+            gteVote: newQuery.gteVote || "",
+            lteVote: newQuery.lteVote || ""
+        });
     };
 
     const setPage = (newPage) => {
-        setSearchParams({ page: newPage });
+        setSearchParams((prevParams) => {
+            const updatedParams = new URLSearchParams(prevParams);
+
+            updatedParams.set("page", newPage);
+
+            return updatedParams;
+        });
     };
+
 
     return { movies, searchContent, loading, error, page, setPage, totalPages };
 }

@@ -21,7 +21,7 @@ export default function SeriesDetails() {
             <div className={style['imgBackdropConteiner']} >
                 <div
                     className={style['imgBackdrop']}
-                    style={{ '--backdrop-img': `url(https://image.tmdb.org/t/p/w1920${movieDetails.backdrop_path})` }}>
+                    style={{ '--backdrop-img': `url(https://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path})` }}>
 
                 </div>
             </div>
@@ -56,6 +56,7 @@ export default function SeriesDetails() {
 
             <MoviePlayer type="tv" movieId={movieDetails.id} />
 
+            <h1>Recommendations:</h1>
             {movie && <Slider details={movie} isReverse={false} />}
         </>
     );
