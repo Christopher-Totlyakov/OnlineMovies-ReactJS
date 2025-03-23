@@ -40,6 +40,16 @@ export async function movieRecommendations(tupe, signal, movieId) {
     return result;
 }
 
+export async function fetchGenres(tupe, signal) {
+
+    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/genres`;
+
+    const response = await fetch(url, { signal });
+    const result = await response.json();
+
+    return result;
+}
+
 export const getMovies = DataRequest.bind(null, 'movies');
 export const getSeries = DataRequest.bind(null, 'tv');
 
