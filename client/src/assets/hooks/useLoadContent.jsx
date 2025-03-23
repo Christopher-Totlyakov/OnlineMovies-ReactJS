@@ -16,11 +16,12 @@ export function useLoadContent(type, initialSeries = []) {
     const [query, setQuery] = useState({
         page: page,
         year: searchParams.get("year") || "",
-        gteYear: searchParams.get("gteYear") || "1900-01-01",
-        lteYear: searchParams.get("lteYear") || "2025-01-01",
+        gteYear: searchParams.get("gteYear") || "1900",
+        lteYear: searchParams.get("lteYear") || "2025",
         gteVote: searchParams.get("gteVote") || "",
         lteVote: searchParams.get("lteVote") || "10",
         name: searchParams.get("name") || "",
+        genres: searchParams.get("genres") || "",
     });
 
     useEffect(() => {
@@ -29,7 +30,7 @@ export function useLoadContent(type, initialSeries = []) {
         (async () => {
             try {
                 setLoading(true);
-                const data = await DataRequest(type, controller.signal, query.year, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote, query.name);
+                const data = await DataRequest(type, controller.signal, query.year, query.gteYear, query.lteYear, page, query.gteVote, query.lteVote, query.name, query.genres);
                 setMovies(data.results || []);
                 setTotalPages(data.total_pages || 1);
             } catch (err) {
@@ -48,11 +49,12 @@ export function useLoadContent(type, initialSeries = []) {
         const newQuery = {
             page: page,
             year: searchParams.get("year") || "",
-            gteYear: searchParams.get("gteYear") || "1900-01-01",
-            lteYear: searchParams.get("lteYear") || "2025-01-01",
-            gteVote: searchParams.get("gteVote") || "",
+            gteYear: searchParams.get("gteYear") || "1900",
+            lteYear: searchParams.get("lteYear") || "2025",
+            gteVote: searchParams.get("gteVote") || "0",
             lteVote: searchParams.get("lteVote") || "10",
             name: searchParams.get("name") || "",
+            genres: searchParams.get("genres") || "",
         };
         setQuery(newQuery); 
     }, [searchParams, page]);
@@ -64,10 +66,11 @@ export function useLoadContent(type, initialSeries = []) {
 
         if (newQuery.name) updatedParams.name = newQuery.name;
         if (newQuery.year) updatedParams.year = newQuery.year;
-        if (newQuery.gteYear && newQuery.gteYear !== "1900-01-01") updatedParams.gteYear = newQuery.gteYear;
-        if (newQuery.lteYear && newQuery.lteYear !== "2025-01-01") updatedParams.lteYear = newQuery.lteYear;
+        if (newQuery.genres) updatedParams.genres = newQuery.genres;
+        if (newQuery.gteYear && newQuery.gteYear !== "1900") updatedParams.gteYear = newQuery.gteYear;
+        if (newQuery.lteYear && newQuery.lteYear !== "2025") updatedParams.lteYear = newQuery.lteYear;
         if (newQuery.gteVote) updatedParams.gteVote = newQuery.gteVote;
-        if (newQuery.lteVote && newQuery.lteVote !== "10") updatedParams.lteVote = newQuery.lteVote;
+        if (newQuery.lteVote && newQuery.lteVote !== 10) updatedParams.lteVote = newQuery.lteVote;
 
         updatedParams.page = 1; 
 
@@ -82,8 +85,9 @@ export function useLoadContent(type, initialSeries = []) {
 
             if (!updatedParams.get("name")) updatedParams.delete("name");
             if (!updatedParams.get("year")) updatedParams.delete("year");
-            if (!updatedParams.get("gteYear") || updatedParams.get("gteYear") === "1900-01-01") updatedParams.delete("gteYear");
-            if (!updatedParams.get("lteYear") || updatedParams.get("lteYear") === "2025-01-01") updatedParams.delete("lteYear");
+            if (!updatedParams.get("genres")) updatedParams.delete("genres");
+            if (!updatedParams.get("gteYear") || updatedParams.get("gteYear") === "1900") updatedParams.delete("gteYear");
+            if (!updatedParams.get("lteYear") || updatedParams.get("lteYear") === "2025") updatedParams.delete("lteYear");
             if (!updatedParams.get("gteVote")) updatedParams.delete("gteVote");
             if (!updatedParams.get("lteVote") || updatedParams.get("lteVote") === "10") updatedParams.delete("lteVote");
 

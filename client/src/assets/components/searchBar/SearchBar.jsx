@@ -14,7 +14,7 @@ export function SearchBar({ onSearch, genres }) {
     function getInitialQuery(mode) {
         return mode === "basic"
             ? { type: "movie", name: '', year: '', page: 1 }
-            : { type: "movie", gteYear: '', lteYear: '', gteVote: '', lteVote: '', genre: '', page: 1 };
+            : { type: "movie", gteYear: '', lteYear: '', gteVote: '', lteVote: '', genres: '', page: 1 };
     }
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export function SearchBar({ onSearch, genres }) {
 
     const handleChange = useCallback((e) => {
         if (e.type === "YearRange") {
-            setQuery((prev) => ({ ...prev, gteYear: `${e.min}-01-01`, lteYear: `${e.max}-01-01` }));
+            setQuery((prev) => ({ ...prev, gteYear: `${e.min}`, lteYear: `${e.max}` }));
         } else if (e.type === "RatingRange") {
             setQuery((prev) => ({ ...prev, gteVote: e.min, lteVote: e.max }));
         } else {
@@ -41,7 +41,7 @@ export function SearchBar({ onSearch, genres }) {
             lteYear: query.lteYear || "",
             gteVote: query.gteVote || "",
             lteVote: query.lteVote || "",
-            genre: query.genre || ""
+            genres: query.genres || ""
         });
         onSearch(query);
     };
@@ -117,11 +117,11 @@ export function SearchBar({ onSearch, genres }) {
                             onChange={handleChange}
                         />
                     </label>
-                    <label htmlFor="Genre">
+                    <label htmlFor="Genres">
                         <p className={styles["label"]}>Genre</p>
                         <select
-                            name="genre"
-                            value={query.genre || ""}
+                            name="genres"
+                            value={query.genres || ""}
                             onChange={handleChange}
                             className={styles["dropdown"]}
                         >

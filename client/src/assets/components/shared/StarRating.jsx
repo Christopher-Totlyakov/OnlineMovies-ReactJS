@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './StarRating.module.css'; // CSS файлът със стиловете
+import styles from './StarRating.module.css';
 
 const StarRating = ({ rating, maxStars = 10 }) => {
     const percentage = (rating / maxStars) * 100;
