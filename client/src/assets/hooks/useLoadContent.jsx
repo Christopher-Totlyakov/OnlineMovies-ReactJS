@@ -10,7 +10,7 @@ export function useLoadContent(type, initialSeries = []) {
     const [totalPages, setTotalPages] = useState(1);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const genres = useLoadGenres(type);
+    const { genres, genresLoading, genresError } = useLoadGenres(type);
     const page = Number(searchParams.get("page")) || 1;
 
     const [query, setQuery] = useState({

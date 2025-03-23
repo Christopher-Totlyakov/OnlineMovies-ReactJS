@@ -3,8 +3,8 @@ import { fetchGenres } from "../../api/dataMovies";
 
 export function useLoadGenres(type) {
     const [genres, setGenres] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [genresLoading, setLoading] = useState(true);
+    const [genresError, setError] = useState(null);
 
     useEffect(() => {
         const cacheKey = `genres_${type}`;
@@ -15,16 +15,11 @@ export function useLoadGenres(type) {
         const today = new Date().toISOString().split("T")[0];
 
         if (cachedData && cachedDate === today) {
-            try {
-                const parsedData = JSON.parse(cachedData);
-                setGenres(Array.isArray(parsedData) ? parsedData : []);
-            } catch (err) {
-                console.error("Грешка при парсване на кешираните жанрове:", err);
-                setGenres([]);
-            }
+            setGenres(JSON.parse(cachedData));
             setLoading(false);
             return;
         }
+
 
         const controller = new AbortController();
 
@@ -33,7 +28,7 @@ export function useLoadGenres(type) {
                 setLoading(true);
                 const response = await fetchGenres(type, controller.signal);
 
-                    localStorage.setItem(cacheKey, JSON.stringify(response.genres));
+                    localStorage.setItem(cacheKey, JSON.stringify(response));
                     localStorage.setItem(cacheDateKey, today);
                     setGenres(response);
 
@@ -50,5 +45,5 @@ export function useLoadGenres(type) {
         return () => controller.abort();
     }, [type]);
 
-    return { genres, loading, error };
+    return { genres, genresLoading, genresError };
 }
