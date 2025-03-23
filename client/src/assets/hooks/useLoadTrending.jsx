@@ -28,7 +28,7 @@ export function useLoadTrending(type) {
                 const response = await movieTrending(type, controller.signal);
                 
                 localStorage.setItem(cacheKey, JSON.stringify(response));
-                localStorage.setItem(cacheDateKey, today); // Запазваме само датата
+                localStorage.setItem(cacheDateKey, today);
 
                 setDetails(response);
             } catch (err) {

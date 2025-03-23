@@ -5,19 +5,18 @@ import styles from './components/SearchBar.module.css';
 import MultiRangeSlider from "./components/MultiRangeSlider";
 import TextBox from "./components/TextBox";
 
-export function SearchBar({ onSearch }) {
+export function SearchBar({ onSearch, genres }) {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [query, setQuery] = useState(getInitialQuery("basic")); 
+    const [query, setQuery] = useState(getInitialQuery("basic"));
     const [searchMode, setSearchMode] = useState("basic");
     const currentYear = new Date().getFullYear();
-
+    
     function getInitialQuery(mode) {
         return mode === "basic"
             ? { type: "movie", name: '', year: '', page: 1 }
-            : { type: "movie", gteYear: '', lteYear: '', gteVote: '', lteVote: '', page: 1 };
-            
+            : { type: "movie", gteYear: '', lteYear: '', gteVote: '', lteVote: '', genre: '', page: 1 };
     }
-    
+
     useEffect(() => {
         setQuery(getInitialQuery(searchMode));
     }, [searchMode]);
@@ -41,17 +40,17 @@ export function SearchBar({ onSearch }) {
             gteYear: query.gteYear || "",
             lteYear: query.lteYear || "",
             gteVote: query.gteVote || "",
-            lteVote: query.lteVote || ""
+            lteVote: query.lteVote || "",
+            genre: query.genre || ""
         });
         onSearch(query);
     };
 
-
     return (
         <form onSubmit={handleSubmit} className={styles['searchForm']}>
-           
+
             <div className={styles["radio-group"]}>
-                
+
                 <label className={styles["radioContainer"]}>
                     <input
                         type="radio"
@@ -117,7 +116,24 @@ export function SearchBar({ onSearch }) {
                             name="RatingRange"
                             onChange={handleChange}
                         />
-                </label>
+                    </label>
+                    <label htmlFor="Genre">
+                        <p className={styles["label"]}>Genre</p>
+                        <select
+                            name="genre"
+                            value={query.genre || ""}
+                            onChange={handleChange}
+                            className={styles["dropdown"]}
+                        >
+                            <option value="">All Genres</option>
+                            {genres.genres.map((genre) => (
+                                    <option key={genre.id} value={genre.id}>
+                                        {genre.name}
+                                    </option>
+                                ))}
+                            
+                        </select>
+                    </label>
                 </div>
             )}
 
@@ -126,4 +142,4 @@ export function SearchBar({ onSearch }) {
             </button>
         </form>
     );
-}
+}  

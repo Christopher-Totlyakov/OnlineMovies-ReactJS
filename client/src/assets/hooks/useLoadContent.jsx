@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { DataRequest } from "../../api/dataMovies";
+import { useLoadGenres } from "./useLoadGenres"
 
 export function useLoadContent(type, initialSeries = []) {
     const [movies, setMovies] = useState(initialSeries);
@@ -9,6 +10,7 @@ export function useLoadContent(type, initialSeries = []) {
     const [totalPages, setTotalPages] = useState(1);
 
     const [searchParams, setSearchParams] = useSearchParams();
+    const genres = useLoadGenres(type);
     const page = Number(searchParams.get("page")) || 1;
 
     const [query, setQuery] = useState({
@@ -90,5 +92,5 @@ export function useLoadContent(type, initialSeries = []) {
     };
 
 
-    return { movies, searchContent, loading, error, page, setPage, totalPages };
+    return { movies, searchContent, loading, error, page, setPage, totalPages, genres };
 }
