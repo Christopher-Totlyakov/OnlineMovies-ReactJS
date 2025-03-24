@@ -118,21 +118,21 @@ export function SearchBar({ onSearch, genres }) {
                         />
                     </label>
                     <label htmlFor="Genres">
-                        <p className={styles["label"]}>Genre</p>
-                        <select
-                            name="genres"
-                            value={query.genres || ""}
-                            onChange={handleChange}
-                            className={styles["dropdown"]}
-                        >
-                            <option value="">All Genres</option>
-                            {genres.genres.map((genre) => (
+                        <div className={styles["dropdown-container"]}>
+                            <select
+                                name="genres"
+                                value={query.genres || ""}
+                                onChange={handleChange}
+                                className={styles["dropdown"]}
+                            >
+                                <option value="">All Genres</option>
+                                {genres.genres.map((genre) => (
                                     <option key={genre.id} value={genre.id}>
                                         {genre.name}
                                     </option>
                                 ))}
-                            
-                        </select>
+                            </select>
+                        </div>
                     </label>
                 </div>
             )}
