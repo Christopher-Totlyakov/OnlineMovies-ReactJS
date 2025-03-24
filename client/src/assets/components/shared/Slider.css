@@ -1,5 +1,6 @@
 .sliderTrending{
-    margin-bottom: 5em;    
+    margin-bottom: 5em;  
+    width: 99.2vw;
     filter: drop-shadow(-1px 0px 5px rgba(255, 255, 255, 0.767));
 }
 
