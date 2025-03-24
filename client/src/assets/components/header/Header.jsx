@@ -11,10 +11,10 @@ export function Header() {
       </div>
       <div className="headerContainer">
         <div className="header-right">
-          <img src="/movieLogo.png" alt="movie logo" />
-          <Navigation />
+          <img src="/movieLogo.png" alt="movie logo" />        
         </div>
       </div>
+      <Navigation />
     </header>
   );
 }
