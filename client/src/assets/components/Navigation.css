@@ -6,36 +6,213 @@ header nav a{
 
 }
 header nav{
-    align-self: baseline;
-    margin-top: 30px;
+    position: absolute;
+    top: 30px;
+    right: 0;
 }
 
-@media (min-width: 1200px) {
-    header nav a {
-        font-size: 2em;
-        margin: 0 1.5em 0.5em 0;
+#phone-nav {
+    display: none;
+}
+
+#phone-nav-icon {
+    background-color: rgba(245, 222, 179, 0);
+    width: 40px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    height: 30px;
+    z-index: 2;
+}
+
+#phone-nav-icon .nav-icon-line {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 32px;
+    background: #DADADA;
+    left: unset;
+    right: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    border-radius: 25%;
+}
+
+
+#phone-nav-icon .nav-icon-line.first-line {
+    top: 0px;
+}
+
+#phone-nav-icon .nav-icon-line.second-line {
+    top: 10px;
+}
+
+#phone-nav-icon .nav-icon-line.third-line {
+    top: 20px;
+}
+
+#phone-nav-icon .nav-icon-line.first-line,
+#phone-nav-icon .nav-icon-line.second-line,
+#phone-nav-icon .nav-icon-line.third-line {
+    transform-origin: left center;
+}
+
+#phone-nav-icon.open .nav-icon-line.first-line {
+    transform: rotate(40deg);
+}
+
+#phone-nav-icon.open .nav-icon-line.second-line {
+    width: 0%;
+    opacity: 0;
+}
+
+#phone-nav-icon.open .nav-icon-line.third-line {
+    transform: rotate(-40deg);
+}
+
+#phone-nav {
+    display: none;
+}
+
+#phone-nav-icon {
+    width: 40px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    height: 30px;
+    z-index: 2;
+}
+
+#phone-nav-icon .nav-icon-line {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 32px;
+    background: #DADADA;
+    left: unset;
+    right: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    border-radius: 25%;
+}
+
+
+#phone-nav-icon .nav-icon-line.first-line {
+    top: 0px;
+}
+
+#phone-nav-icon .nav-icon-line.second-line {
+    top: 10px;
+}
+
+#phone-nav-icon .nav-icon-line.third-line {
+    top: 20px;
+}
+
+#phone-nav-icon .nav-icon-line.first-line,
+#phone-nav-icon .nav-icon-line.second-line,
+#phone-nav-icon .nav-icon-line.third-line {
+    transform-origin: left center;
+}
+
+#phone-nav-icon.open .nav-icon-line.first-line {
+    transform: rotate(40deg);
+}
+
+#phone-nav-icon.open .nav-icon-line.second-line {
+    width: 0%;
+    opacity: 0;
+}
+
+#phone-nav-icon.open .nav-icon-line.third-line {
+    transform: rotate(-40deg);
+}
+
+.menu-box {
+    position: absolute;
+    height: 120px;
+    width: 150px;
+    background-color: #333;
+    z-index: 1;
+    background-position: left;
+    right: 2px;
+    top: 0;
+    border-radius: 0 0 0 50px;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.transition-exit {
+    animation: fadeOut 0.8s ease-in-out 1;
+
+}
+
+.transition-enter {
+    animation: fadeIn 0.1s ease-in-out 1;
+}
+
+@keyframes fadeOut {
+    from {
+        clip-path: circle(150% at 100% 0px);
+        opacity: 1;
     }
 
-    header nav {
-        margin-top: 40px;
+    to {
+        clip-path: circle(0% at 100% 0px);
+        opacity: 0;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        clip-path: circle(0% at 100% 0px);
+        opacity: 0;
+    }
+
+    to {
+        clip-path: circle(150% at 100% 0px);
+        opacity: 1;
+    }
+}
+.menu-box ul{
+    list-style-type: none;
+}
+
+.menu-box>ul a {
+    padding: 0;
+    margin: 0 1.5em;
+    font-size: 1.3em;
+}
+
+.menu-box ul li {
+    margin-bottom: 0.5em;
+}
+
 
 @media (max-width: 1199px) and (min-width: 768px) {
     header nav a {
         font-size: 1.5em;
-        margin: 0 1em 0.5em 0;
+        margin: 0 1em 1em 0;
     }
 
     header nav {
-        margin-top: 45px;
+        top: 40px;
     }
 }
 
-@media (max-width: 767px) {
-    header nav a {
-        font-size: 1.2em;
-        margin: 0 0.5em 0.5em 0;
+@media (max-width: 850px) {
+    #phone-nav {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 80px;
+    }
+    .menu-box {
+        display: block;
     }
 
     header nav {
@@ -43,13 +220,14 @@ header nav{
     }
 }
 
-@media (max-width: 480px) {
-    header nav a {
-        font-size: 1em;
-        margin: 0 0.3em 0.5em 0;
-    }
+@media (max-width: 767px) {
+    #phone-nav {
+            right: 30px;
+        }
+}
 
-    header nav {
-        margin-top: 15px;
+@media (max-width: 480px) {
+    #phone-nav {
+        right: 20px;
     }
 }
