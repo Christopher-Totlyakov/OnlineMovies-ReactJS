@@ -21,16 +21,15 @@ export function Navigation() {
             </nav>
 
             <div id="phone-nav">
-                {/* Бутонът за менюто */}
                 <button
                     id="phone-nav-icon"
                     className={isOpen ? "open" : ""}
                     onClick={toggleMenu}
                     aria-expanded={isOpen}
                     onBlur={(e) => {
-                        // if (!menuRef.current.contains(e.relatedTarget)) {
-                        //     setIsOpen(false);
-                        // }
+                        if (!menuRef.current.contains(e.relatedTarget)) {
+                            setIsOpen(false);
+                        }
                     }}
                 >
                     <span className="nav-icon-line first-line"></span>
@@ -38,18 +37,17 @@ export function Navigation() {
                     <span className="nav-icon-line third-line"></span>
                 </button>
 
-                {/* Менюто */}
                 {isOpen && (
                     <div
                         ref={menuRef}
                         className="menu-box"
-                        tabIndex={-1} // Позволява onBlur да работи
+                        tabIndex={-1}
                         style={{opacity:1}}
                     >
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/movies">Movies</Link></li>
-                            <li><Link to="/series">Series</Link></li>
+                            <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                            <li><Link to="/movies" onClick={() => setIsOpen(false)}>Movies</Link></li>
+                            <li><Link to="/series" onClick={() => setIsOpen(false)}>Series</Link></li>
                         </ul>
                     </div>
                 )}

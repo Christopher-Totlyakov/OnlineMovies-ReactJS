@@ -551,3 +551,22 @@
 .dropdown-container:active::before {
   scale: 0.7;
 }
+
+@media (max-width: 1199px) and (min-width: 768px) {
+ 
+}
+
+@media (max-width: 850px) {
+.inputsConteiner {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+ 
+}
+
+@media (max-width: 480px) {
+ 
+}
