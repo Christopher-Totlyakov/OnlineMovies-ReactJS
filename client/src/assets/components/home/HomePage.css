@@ -6,3 +6,9 @@
 .homeContainer .highlight{
     color: brown;
 }
+
+@media (max-width: 480px) {
+    .homeTitleSlider{
+        font-size: 2em;
+    }
+}

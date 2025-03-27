@@ -2,6 +2,9 @@ import { useLoadContent } from "../../hooks/useLoadContent";
 import { SearchBar } from "../searchBar/SearchBar";
 import { SeriesList } from "./SeriesList";
 
+
+import "./SeriesPage.css"
+
 export function SeriesPage() {
     const { movies, searchContent, loading, error, page, setPage, totalPages, genres } = useLoadContent('tv', []);
 
@@ -11,7 +14,7 @@ export function SeriesPage() {
     
     return (
         <article>
-            <h1>series & TV shows</h1>
+            <h1 className="seriesPageTitle">series & TV shows</h1>
             <SearchBar onSearch={handleSearch} genres={genres} />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}

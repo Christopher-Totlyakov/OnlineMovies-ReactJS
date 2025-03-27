@@ -54,9 +54,9 @@ export default function MovieDetails() {
 
             <TrailerButton trailerId={movieDetails.trailers?.length > 0 ? movieDetails.trailers[0].key : null} />
 
-            <MoviePlayer type="movie" movieId={movieDetails.id} />
+            <MoviePlayer type="movie" movieId={2} />
 
-            <h1>Recommendations:</h1>
+            <h1 className={style['recommendationsTitle']}>Recommendations:</h1>
             {movie && <Slider details={movie} isReverse={false} />}
         </>
     );

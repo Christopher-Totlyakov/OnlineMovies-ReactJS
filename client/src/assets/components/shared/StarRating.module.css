@@ -21,3 +21,17 @@
     transition: width 3s ease-in-out;
     filter: drop-shadow(0 0 10px rgb(255, 0, 0));
 }
+
+@media (max-width: 1199px) {
+    .starContainer {
+        font-size: 26px;
+        letter-spacing: 2px;
+        align-self: end;
+    }
+}
+
+@media (max-width: 850px) {}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 480px) {}

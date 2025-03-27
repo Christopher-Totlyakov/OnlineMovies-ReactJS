@@ -15,16 +15,12 @@
 .shadowContainer {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0px 0px 3px rgb(0, 0, 0))
-    drop-shadow(0px 0px 6px rgb(0, 0, 0))
-    drop-shadow(0px 0px 8px rgb(0, 0, 0))
-    drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8))
-    drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0px 0px 3px rgb(0, 0, 0)) drop-shadow(0px 0px 6px rgb(0, 0, 0)) drop-shadow(0px 0px 8px rgb(0, 0, 0)) drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.8)) drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
     position: relative;
     top: -100px;
 }
 
-.buttonConteiner{
+.buttonConteiner {
     display: inline-block;
     top: -332px;
     left: 287px;
@@ -96,7 +92,7 @@
     opacity: 1;
 }
 
-.inputContainer{
+.inputContainer {
     gap: 10px;
     position: relative;
     top: -310px;
@@ -104,7 +100,7 @@
     display: inline-flex;
 }
 
-.inputContainer input{
+.inputContainer input {
     position: relative;
     top: -28px;
     width: 100px;
@@ -116,7 +112,8 @@
     color: white;
     z-index: 1;
 }
-.inputContainer label{
+
+.inputContainer label {
     border: 2px solid black;
     border-radius: 10px 20px;
     padding: 5px 10px;
@@ -141,7 +138,7 @@
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     z-index: -2;
- 
+
 }
 
 .inpytNumber:hover .numberInpytCircle {
@@ -151,7 +148,7 @@
     opacity: 1;
 }
 
-.inpytNumber{
+.inpytNumber {
     width: 100px;
     height: 100px;
     text-align: center;
@@ -159,16 +156,16 @@
     font-size: 1.2em;
     background-color: black;
     color: white;
-    z-index: 10; 
-  
+    z-index: 10;
+
 }
 
-.inpytNumber:nth-child(2){
+.inpytNumber:nth-child(2) {
     position: relative;
     top: -40px;
 }
 
-.circleContainer{
+.circleContainer {
     position: relative;
     width: 100px;
     height: 100px;
@@ -177,3 +174,57 @@
     top: -130px;
     left: 0;
 }
+
+@media (max-width: 1199px) {}
+
+@media (max-width: 850px) {}
+
+@media (max-width: 780px) {
+    .buttonConteiner {
+        top: -332px;
+        left: 87px;
+        transform: rotate(-20deg);
+    }
+
+    .buttonConteiner {
+        top: -250px;
+        left: 0px;
+        transform: rotate(-20deg);
+    }
+
+    .animated-button .increaseSvg {
+        right: 20px;
+    }
+
+    .animated-button {
+        font-size: 24px;
+        clip-path: path("M 0,75 C 100,20 200,15 235,100 C 125,135 75,135 0,75 Z");
+        width: 235px;
+        height: 150px;
+    }
+
+    .animated-button svg {
+
+        width: 25px;
+        height: 25px;
+    }
+
+    .animated-button:hover .circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .inputContainer {
+        top: -230px;
+        left: 300px;
+    }
+
+    .inputContainer input {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5em;
+    }
+}
+
+
+@media (max-width: 480px) {}
