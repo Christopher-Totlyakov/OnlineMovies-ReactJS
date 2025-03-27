@@ -56,8 +56,10 @@ export default function SeriesDetails() {
 
             <MoviePlayer type="tv" movieId={movieDetails.id} />
 
-            <h1>Recommendations:</h1>
-            {movie && <Slider details={movie} isReverse={false} />}
+            <div className={style['recommendationsBox']}>
+                <h1 className={style['recommendationsTitle']}>Recommendations:</h1>
+                {movie && <Slider details={movie} isReverse={false} />}
+            </div>
         </>
     );
 }

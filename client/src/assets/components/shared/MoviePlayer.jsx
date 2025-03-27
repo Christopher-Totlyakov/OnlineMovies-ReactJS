@@ -16,7 +16,7 @@ const MoviePlayer = ({ type, movieId }) => {
   const [currentSeason, setCurrentSeason] = useState(initialSeason);
   const [currentEpisode, setCurrentEpisode] = useState(initialEpisode);
 
-  let embedUrl = `https://vidsrc.icu/embed/${type}/${movieId}`;
+  let embedUrl = `https://online-movie-worker.laminex0622.workers.dev/player?type=${type}&id=${movieId}&`;
   if (type === "tv") {
     useEffect(() => {
       if (!searchParams.has("season") || !searchParams.has("episode")) {
@@ -31,14 +31,14 @@ const MoviePlayer = ({ type, movieId }) => {
         navigate(
           {
             pathname: window.location.pathname,
-            search: `?season=${currentSeason}&episode=${currentEpisode}`,
+            search: `season=${currentSeason}&episode=${currentEpisode}`,
           },
           { replace: false }
         );
       }
     }, [currentSeason, currentEpisode, navigate]);
 
-    embedUrl += `/${currentSeason}/${currentEpisode}`;
+    embedUrl += `season=${currentSeason}&episode=${currentEpisode}`;
   }
 
   const toggleFullScreen = () => {
