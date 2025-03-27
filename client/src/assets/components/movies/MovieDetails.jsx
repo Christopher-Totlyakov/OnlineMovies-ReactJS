@@ -54,10 +54,12 @@ export default function MovieDetails() {
 
             <TrailerButton trailerId={movieDetails.trailers?.length > 0 ? movieDetails.trailers[0].key : null} />
 
-            <MoviePlayer type="movie" movieId={2} />
+            <MoviePlayer type="movie" movieId={movieDetails.id} />
 
+            <div className={style['recommendationsBox']}>
             <h1 className={style['recommendationsTitle']}>Recommendations:</h1>
             {movie && <Slider details={movie} isReverse={false} />}
+            </div>
         </>
     );
 }

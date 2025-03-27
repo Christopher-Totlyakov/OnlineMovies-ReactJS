@@ -75,6 +75,11 @@
     margin-bottom: 40px;
 }
 
+.recommendationsBox {
+    position: relative;
+    bottom: 200px;
+}
+
 @media (max-width: 1199px) {
     .movieOverview {
         font-size: 1.2em;

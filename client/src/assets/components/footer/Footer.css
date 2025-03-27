@@ -1,5 +1,8 @@
 .footerDivElement{
-    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.801);
     clip-path: path("M -50 -250 C 0 420,250 -150, 550 100 C 700 -150, 800 200, 1200 0 L 1200 900, 1200 0 C 1200 0, 1370 300, 1850 0 C 2100 300, 2300 0, 3550 0 L 3550 700 C 3200 700, 0 0, 0 700 Z");
@@ -12,4 +15,13 @@ footer {
     height: auto;
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.493));
     z-index: -1;
+}
+.footerDivElement h1:first-child{
+    margin-top: 50px;
+}
+
+@media (max-width: 550px) {
+    .footerDivElement{
+        font-size: 0.6em;
+    }
 }
