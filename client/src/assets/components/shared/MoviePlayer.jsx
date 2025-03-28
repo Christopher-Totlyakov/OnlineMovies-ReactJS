@@ -103,7 +103,7 @@ const MoviePlayer = ({ type, movieId }) => {
 
         {type === "tv" && (
           <div className={style["inputContainer"]}>
-            <div className={style['inpytNumber']}>
+            <div className={style['inputNumber']}>
               <label>Season: </label>
               <input
                 type="number"
@@ -112,10 +112,10 @@ const MoviePlayer = ({ type, movieId }) => {
                 onChange={(e) => setCurrentSeason(e.target.value)}
               />
               <div className={style['circleContainer']}>
-                <span className={style["numberInpytCircle"]} />
+                <span className={style["numberinputCircle"]} />
               </div>
             </div>
-            <div className={style['inpytNumber']}>
+            <div className={style['inputNumber']}>
               <label>Episode: </label>
               <input
                 type="number"
@@ -124,7 +124,7 @@ const MoviePlayer = ({ type, movieId }) => {
                 onChange={(e) => setCurrentEpisode(e.target.value)}
               />
               <div className={style['circleContainer']}>
-                <span className={style["numberInpytCircle"]} />
+                <span className={style["numberinputCircle"]} />
               </div>
             </div>
           </div>
