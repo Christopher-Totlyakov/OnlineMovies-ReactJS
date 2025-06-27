@@ -1,5 +1,4 @@
-# In developed 
-## In developed React JS movie site with FAAS architecture. FAAS plays the role of reverse proxy from IPA.
+# React JS movie site with FAAS architecture. FAAS plays the role of reverse proxy from API.
 
 - Link to FAAS: https://github.com/Christopher-Totlyakov/OnlineMovieAPI
 
