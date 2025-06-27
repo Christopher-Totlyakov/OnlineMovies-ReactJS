@@ -7,6 +7,7 @@ import { SeriesPage } from "./assets/components/series/SeriesPage";
 import { Footer } from './assets/components/footer/Footer';
 import MovieDetails from './assets/components/movies/MovieDetails';
 import SeriesDetails from './assets/components/series/SeriesDetails';
+import NotFound from './assets/components/404';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="/series" element={<SeriesPage />} />
         <Route path="/series/:id" element={<SeriesDetails />} />
+        <Route path="/*" element={<NotFound/>} />
       </Routes>
 
       <Footer/>
