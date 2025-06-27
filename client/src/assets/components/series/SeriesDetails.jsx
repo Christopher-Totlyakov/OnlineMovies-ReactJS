@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovieDetails";
 import { useLoadeRecommendations } from "../../hooks/useLoadeRecommendations";
 import { Slider } from "../shared/Slider";
@@ -9,12 +10,17 @@ import TrailerButton from "../movies/TrailerButton";
 import MoviePlayer from "../shared/MoviePlayer";
 
 export default function SeriesDetails() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const { movieDetails, loading, error } = useMovieDetails("tv", id);
     const { movie, loadingRecommendations, errorRecommendations } = useLoadeRecommendations("tv", id);
+       useEffect(() => {
+            if (error) {
+                navigate("/404");
+            }
+        }, [error, navigate]);
 
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error loading movie details.</p>;
 
     return (
         <>

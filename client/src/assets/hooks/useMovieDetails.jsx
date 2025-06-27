@@ -15,6 +15,9 @@ export function useMovieDetails(type, id) {
             try {
                 setLoading(true);
                 const response = await movieDetailsByID(type, controller.signal, id);
+                if (response.success !== undefined) {
+                    setError("Not found");
+                } 
                 setMovieDetails(response);
             } catch (err) {
                 if (err.name !== "AbortError") {

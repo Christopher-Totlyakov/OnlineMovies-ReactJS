@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMovieDetails } from "../../hooks/useMovieDetails";
 import { useLoadeRecommendations } from "../../hooks/useLoadeRecommendations";
 import { Slider } from "../shared/Slider";
@@ -9,13 +10,19 @@ import TrailerButton from "./TrailerButton";
 import MoviePlayer from "../shared/MoviePlayer";
 
 export default function MovieDetails() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const { movieDetails, loading, error } = useMovieDetails("movie", id);
     const { movie, loadingRecommendations, errorRecommendations } = useLoadeRecommendations("movie", id);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error loading movie details.</p>;
+    useEffect(() => {
+        if (error) {
+            navigate("/404");
+        }
+    }, [error, navigate]);
 
+    if (loading) return <p>Loading...</p>;
+    
     return (
         <>
             {movieDetails.backdrop_path &&
