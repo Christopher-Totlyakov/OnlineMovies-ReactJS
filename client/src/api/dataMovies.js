@@ -1,8 +1,10 @@
+const UrlApi = "https://online-movie-worker.laminex0622.workers.dev";
+
 export async function DataRequest(tupe, signal, year = '', gteYear = '', lteYear = '', page = 1, gteVote = '', lteVote = '', name = '', genres = '') {
 
     //const currentYear = new Date().getFullYear();
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}?year=${year}&gteYear=${gteYear}&lteYear=${lteYear}&page=${page}&gteVote=${gteVote}&lteVote=${lteVote}&name=${name}&genres=${genres}`;
+    let url = `${UrlApi}/${tupe}?year=${year}&gteYear=${gteYear}&lteYear=${lteYear}&page=${page}&gteVote=${gteVote}&lteVote=${lteVote}&name=${name}&genres=${genres}`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
@@ -12,7 +14,7 @@ export async function DataRequest(tupe, signal, year = '', gteYear = '', lteYear
 
 export async function movieDetailsByID(tupe, signal, movieId, language = "en-US") {
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/details?id=${movieId}&language=${language}`;
+    let url = `${UrlApi}/${tupe}/details?id=${movieId}&language=${language}`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
@@ -22,7 +24,7 @@ export async function movieDetailsByID(tupe, signal, movieId, language = "en-US"
 
 export async function movieTrending(tupe, signal) {
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/trending?time=day`;
+    let url = `${UrlApi}/${tupe}/trending?time=day`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
@@ -32,7 +34,7 @@ export async function movieTrending(tupe, signal) {
 
 export async function movieRecommendations(tupe, signal, movieId) {
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/recommendations?id=${movieId}`;
+    let url = `${UrlApi}/${tupe}/recommendations?id=${movieId}`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
@@ -42,7 +44,7 @@ export async function movieRecommendations(tupe, signal, movieId) {
 
 export async function fetchGenres(tupe, signal) {
 
-    let url = `https://online-movie-worker.laminex0622.workers.dev/${tupe}/genres`;
+    let url = `${UrlApi}/${tupe}/genres`;
 
     const response = await fetch(url, { signal });
     const result = await response.json();
